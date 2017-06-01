@@ -19,21 +19,34 @@
 <div id="wrapper"> 
     <header>
 		<ul>
-			<li>О методе</li>
-			<li>Прочесть инструкцию</li>
-			<li>Тренировка</li>
-			<li>Начать тест</li>
+			<li id="about" onclick = "click_about_show();">О методе</li>
+			<li id="todo" onclick = "click_todo_show();">Прочесть инструкцию</li>
+			<li id="simulation">Тренировка</li>
+			<li id="test">Начать тест</li>
 		</ul>
 	</header>
 	
-	<div class="button">
-		<div id="big-button">
-		Внимание
+	<div id="page">
+	
+		<div class="text" id="p_about">
+		Статья о методике о методике о методике о методике о методике о методике о методике
 		</div>
 		
-	</div>
-						
+		<div class="text" id="p_todo">
+		Инструкция инструкция инструкция инструкция инструкция инструкция инструкция
+		</div>
+		
+		<!-- <button onclick="timedText()">Try it</button>
+		<p id="demo">Click on "Try it". I will display when two, four, and six seconds have passed.</p>
+		 -->
+		<div class="button">
+			<div id="big-button">
+			Внимание
+			</div>
 			
+		</div>
+						
+	</div>		
 	<!-- <a href="#">текст ссылки</a> -->	
 </div>  
 </body>
