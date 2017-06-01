@@ -60,3 +60,10 @@ ul li {
 	text-align: center;
 }
 
+#signal{
+	background-color: yellow;
+	width: 100px;
+	height: 50px;
+	border-radius: 5%;
+	text-align: center;
+}

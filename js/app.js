@@ -20,6 +20,50 @@
 		timedText();
 	}
 	
+	
+	function myTimeoutSignal() {
+		$( "#signal" ).hide();
+		document.getElementById("demo").innerHTML = "сигнал исчез через 2 seconds";
+	}
+	
+	function interval (seconds)
+	{
+		setTimeout(end_signal, seconds)
+	}
+	
+	function end_signal ()
+	{
+		$("#signal").text("end");
+		$( "#signal" ).show();
+		setTimeout(myTimeoutSignal, 2000)
+	}
+	
+	
+	function start_signal ()
+	{
+		$("#signal").text("start")
+		$( "#signal" ).show();
+		
+		setTimeout(myTimeoutSignal, 2000)
+		
+		interval (3000);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	function repeat_show (message) 
+	{
+		put_button_text (message);
+		$( "#button" ).show();
+		timedText();
+	}
+	
+	
 	function put_button_text (message)
 	{
 		$( "#button" ).text(message);
@@ -58,7 +102,7 @@ $(document).ready(function()
 	$("#p_about").hide();
 	$("#p_todo").hide();
 	$("#button").hide();
-	
+	$("#signal").hide();
 	/* function button_hide ()
 	{
 		$( "#big-button" ).hide();

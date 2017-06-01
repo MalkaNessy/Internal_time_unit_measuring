@@ -22,7 +22,7 @@
 			<li id="about" onclick = "click_about_show();">О методе</li>
 			<li id="todo" onclick = "click_todo_show();">Прочесть инструкцию</li>
 			<li id="simulation" onclick="attention_show ('Внимание')">Тренировка</li>
-			<li id="test">Начать тест</li>
+			<li id="test" onclick="start_signal()">Начать тест</li>
 		</ul>
 	</header>
 	
@@ -36,13 +36,16 @@
 		Инструкция инструкция инструкция инструкция инструкция инструкция инструкция
 		</div>
 		
-		<button onclick="timedText()">Try it</button>
-		<p id="demo">Click on "Try it". I will display when two, four, and six seconds have passed.</p>
+		<!-- <button onclick="timedText()">Try it</button> -->
+		<p id="demo">При нажатии на "Тренировка" на 3 секунды появится надпись "Внимание".</p>
 		
 		<div id="button">
 			Внимание
 		</div>
-						
+		<div id="signal">
+			
+		</div>
+		
 	</div>		
 	<!-- <a href="#">текст ссылки</a> -->	
 </div>  
