@@ -79,8 +79,9 @@
 	
 	var start;
 	var end;
-	
+	var temp_result;
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
+	
 	function start_click () 
 	{
 		start = new Date(); // засекли время
@@ -94,7 +95,9 @@
 		end = new Date; // конец измерения
 		end_ms = end.getMilliseconds(); 
 		console.log("end: " + end_ms);
-		document.getElementById("demo").innerHTML = "интервал равен" + (end - start) + " ms" ;
+		temp_result = end - start;
+		console.log("temp_result: " + temp_result);
+		document.getElementById("demo").innerHTML = "интервал равен " + (end - start) + " ms" ;
 	
 	}
 	
@@ -112,7 +115,28 @@
 		$("#click").show();
 	}
 	
+	function starter() 
+		{ 
+			setTimeout(start_button_show, 3000);
+			setTimeout(end_button_show, 3000)
+		}
 	
+	
+	function user_signal ()
+	{
+		attention_show ();
+		starter();
+	}
+	
+	function start_button_show()
+	{
+		$("#start").show();
+	}
+		
+	function end_button_show()
+	{
+		$("#end").show();
+	}
 	
 	/* //меняет надпись на кнопке
 	function put_button_text (message)
