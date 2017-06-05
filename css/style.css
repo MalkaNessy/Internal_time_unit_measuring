@@ -48,7 +48,7 @@ ul li {
 	background-color: #e4d092;
 }
 
-#button {
+.button {
 	width: 150px;
 	font-size: 24px;
 	background-color: green;
@@ -58,6 +58,14 @@ ul li {
 	border: 3px solid yellow;
 	border-radius: 5px;
 	text-align: center;
+}
+
+#p_tau {
+	text-align: center;
+}
+
+input {
+	margin: 2px;
 }
 
 #signal{

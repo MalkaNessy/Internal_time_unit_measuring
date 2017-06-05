@@ -21,12 +21,17 @@
 		<ul>
 			<li id="about" onclick = "click_about_show();">О методе</li>
 			<li id="todo" onclick = "click_todo_show();">Прочесть инструкцию</li>
-			<li id="simulation" onclick="attention_show ('Внимание')">Тренировка</li>
+			<li id="simulation" onclick="attention_show ()">Тренировка</li>
 			<li id="test" onclick="start_signal()">Начать тест</li>
+			<li id="tau" onclick="tau_show()">Результаты</li>
+			
 		</ul>
 	</header>
 	
 	<div id="page">
+	
+	<p id="demo">При нажатии на "Тренировка" появится надпись "Внимание".</p>
+		
 	
 		<div class="text" id="p_about">
 		Статья о методике о методике о методике о методике о методике о методике о методике
@@ -36,14 +41,74 @@
 		Инструкция инструкция инструкция инструкция инструкция инструкция инструкция
 		</div>
 		
-		<!-- <button onclick="timedText()">Try it</button> -->
-		<p id="demo">При нажатии на "Тренировка" на 3 секунды появится надпись "Внимание".</p>
+		<div class="text" id="p_tau" >
+			<input type="text" id="1" value="2000">
+			<input type="text" id="time1"  value="">
+			<input type="submit" id="setBet" onclick="set_time (1)" value="to Bet">
+			<input type="text" id="result1" value="result 1"><br>
+			<input type="text" id="2" value="3000">
+			<input type="text" id="time2" value="person_time 2">
+			<input type="text" id="result2" value="result 2"><br>
+			<input type="text" id="3" value="4000">
+			<input type="text" id="time3" value="person_time 3">
+			<input type="text" id="result3" value="result 3"><br>
+			<input type="text" id="4" value="5000">
+			<input type="text" id="time4" value="person_time 4">
+			<input type="text" id="result4" value="result 4"><br>
+			<input type="text" id="5" value="2000">
+			<input type="text" id="time5" value="person_time 5">
+			<input type="text" id="result5" value="result 5"><br>
+			<input type="text" id="6" value="4000">
+			<input type="text" id="time6" value="person_time 6">
+			<input type="text" id="result6" value="result 6"><br>
+			<input type="text" id="7" value="3000">
+			<input type="text" id="time7" value="person_time 7">
+			<input type="text" id="result7" value="result 7"><br>
+			<input type="text" id="8" value="5000">
+			<input type="text" id="time8" value="person_time 8">
+			<input type="text" id="result8" value="result 8"><br>
+			<input type="text" id="9" value="3000">
+			<input type="text" id="time9" value="person_time 9">
+			<input type="text" id="result9" value="result 9"><br>
+			<input type="text" id="10" value="4000">
+			<input type="text" id="time10" value="perton_time 10">
+			<input type="text" id="result10" value="result 10"><br>
+			<input type="text" id="11" value="2000">
+			<input type="text" id="time11" value="person_time 11">
+			<input type="text" id="result11" value="result 11"><br>
+			<input type="text" id="12" value="5000">
+			<input type="text" id="time12" value="person_time 12">
+			<input type="text" id="result12" value="result 12"><br>
+			<input type="text" id="13" value="5000">
+			<input type="text" id="time13" value="person_time 13">
+			<input type="text" id="result13" value="result 13"><br>
+			<input type="text" id="14" value="4000">
+			<input type="text" id="time14" value="person_time 14">
+			<input type="text" id="result14" value="result 14"><br>
+			<input type="text" id="15" value="3000">
+			<input type="text" id="time15" value="person_time 15">
+			<input type="text" id="result15" value="result 15"><br>
+			<input type="text" id="16" value="2000">
+			<input type="text" id="time16" value="person_time 16">
+			<input type="text" id="result16" value="result 16"><br>
+		</div>
 		
-		<div id="button">
+		
+		<!-- <button onclick="timedText()">Try it</button> -->
+		
+		<div class= "button" id="button">
 			Внимание
 		</div>
-		<div id="signal">
-			
+		
+		<div class= "button" id="repeat">
+			Воспроизведение
+		</div>
+		
+		<div class= "button" id="start" onclick="start_click()">
+			Start
+		</div>
+		<div class= "button" id="end" onclick="end_click()">
+			End
 		</div>
 		
 	</div>		
