@@ -56,7 +56,7 @@
 	{
 		//put_button_text ();
 		$( "#button" ).show();
-		timedText(3000);
+		timedText(2000);
 	}
 		
 	//откладывает исчезновение кнопки "внимание" на время
@@ -76,29 +76,44 @@
 	 
 	 
 	/////////////Воспроизведение промежутка//////////////
+	var data ={1: {"start": 0, "end": 0, "temp_result": 0},
+			   2: {"start": 0, "end": 0, "temp_result": 0}
+
+	};
+	
 	
 	var start;
 	var end;
 	var temp_result;
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
-	
+	var count=1;
 	function start_click () 
 	{
 		start = new Date(); // засекли время
 		start_ms = start.getMilliseconds(); 
 		console.log("start-ms: " + start_ms);
+		data[count].start = start_ms;
+		console.log("data[0].start: " + data[count].start);
 	}
-
+	
+	
 	//фиксирует время в момент конца воспроизводимого промежутка, второй клик
 	function end_click () 
 	{
 		end = new Date; // конец измерения
 		end_ms = end.getMilliseconds(); 
 		console.log("end: " + end_ms);
+		data[count].end = end_ms;
+		console.log("data[0].end: " + data[count].end);
 		temp_result = end - start;
+		data[count].temp_result = temp_result;
 		console.log("temp_result: " + temp_result);
-		document.getElementById("demo").innerHTML = "интервал равен " + (end - start) + " ms" ;
-	
+		console.log("data[0].temp_result: " + data[count].temp_result);
+		
+		console.log("count: " + count);
+		document.getElementById("demo").innerHTML = "start равен " + data[count].start+ " ms, " + "end  равен " + data[count].end+ " ms, " + "temp_result  равен " + data[count].temp_result+ " ms ";
+		set_time (1);
+		count++;
 	}
 	
 	//показывает кнопку "воспроизведите промежуток"	
@@ -109,23 +124,29 @@
 		timedText();
 	}
 	
-	//показывает кнопку, которую должен нажимать пользователь
+	//показывает кнопку "клик", которую должен нажимать пользователь
 	function person_time_button ()
 	{
 		$("#click").show();
 	}
 	
+	//откладывает появление кнопки "клик", которую должен нажимать пользователь
 	function starter() 
 		{ 
 			setTimeout(start_button_show, 3000);
 			setTimeout(end_button_show, 3000)
 		}
 	
+	//запускает всю процедуру отмеривания после нажатия на пункт меню
 	
 	function user_signal ()
 	{
-		attention_show ();
-		starter();
+		
+			console.log("user_signal for start: " );
+		
+			attention_show ();
+			starter();
+			
 	}
 	
 	function start_button_show()
@@ -162,11 +183,20 @@
 		var input=$("#search_input").val().toString();
 	}
 	
-	
-	
-	function set_time (id) 
+	function set_time (id)
 	{
-		/* document.getElementById(id+id).value = ""; */
+		console.log ("set_time start");
+		console.log ("data[id].start: " + data[id].start);
+		document.getElementById("start"+id).value = data[id].start;
+		document.getElementById("end"+id).innerHTML = data[id].end;
+		document.getElementById("temp_result"+id).innerHTML = data[id].temp_result;
+	}
+	
+	
+	
+	/* function set_time (id) 
+	{
+		
 		var time = document.getElementById("time"+id).value;
 		console.log('time+id: ' + ("time"+id));
 		console.log('time: ' + time);
@@ -177,7 +207,7 @@
 		document.getElementById("result"+id).value = tau_temp;
 		
 	}
-	
+	 */
 
 	/* function isNormalInteger(str) 
 	{
@@ -196,7 +226,7 @@ $(document).ready(function()
 	
 	
 	$("#signal").hide();
-	$("#p_tau").hide();
+	/* $("#p_tau").hide(); */
 	 
 });
 

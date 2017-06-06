@@ -75,3 +75,10 @@ input {
 	border-radius: 5%;
 	text-align: center;
 }
+
+.temp {
+	width: 100px;
+	height: 20px;
+	background-color: yellow;
+	margin: 10px;
+}
