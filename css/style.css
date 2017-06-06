@@ -33,6 +33,9 @@ ul li {
 	border: 1px solid brown;
 	border-radius: 5px;
 }
+#page {
+	text-align: center;
+}
 
 .text {
 	font-size: 18px;
@@ -40,7 +43,7 @@ ul li {
 	width: 90%;
 	margin: auto;
 	background-color: white;
-	border: 1px solid brown;
+	/* border: 1px solid brown; */
 	border-radius: 5px;
 }
 
@@ -62,6 +65,8 @@ ul li {
 
 #p_tau {
 	text-align: center;
+	/* margin: auto;
+	background-color: red; */
 }
 
 input {
@@ -77,8 +82,9 @@ input {
 }
 
 .temp {
-	width: 100px;
-	height: 20px;
-	background-color: yellow;
-	margin: 10px;
+	/* 
+	height: 20px; 
+	margin: 10px;*/
+	background-color: LightGray;
+	width: 50px;
 }

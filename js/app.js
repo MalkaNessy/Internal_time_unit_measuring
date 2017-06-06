@@ -68,10 +68,20 @@
 	//убирает с экрана кнопку "внимание"	
 	function myTimeoutAttention() {
 		$( "#button" ).hide();
-		document.getElementById("demo").innerHTML = "надпись исчезла через 3 seconds";
+		document.getElementById("demo").innerHTML = "Воспроизведите промежуток";
+		/* repeat_show (2000, "конец промежутка") */
 	}
 	
-	
+	//показывает кнопку "воспроизведите промежуток"	
+	/* function repeat_show (interval, message) 
+	{
+		console.log("repeat_show start");
+		$( "#repeat" ).show();
+		timedText(interval);
+		put_button_text (message);
+		timedText(interval/2);
+		/* timedText(interval); *
+	} */
 	 
 	 
 	 
@@ -81,6 +91,14 @@
 
 	};
 	
+	/* var new_post = {id: new_post_id, type: "post", text: input_text, title: input_title, comments: {}};
+	this.data[new_post_id]=new_post; */
+	
+	function add_to_data (count)
+	{
+		var new_result = {"start": start, "end": end, "temp_result": temp_result};
+		data[count]=new_result; 
+	}
 	
 	var start;
 	var end;
@@ -89,6 +107,7 @@
 	var count=1;
 	function start_click () 
 	{
+		add_to_data (count);
 		start = new Date(); // засекли время
 		start_ms = start.getMilliseconds(); 
 		console.log("start-ms: " + start_ms);
@@ -112,17 +131,11 @@
 		
 		console.log("count: " + count);
 		document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms ";
-		set_time (1);
+		set_time (count);
 		count++;
 	}
 	
-	//показывает кнопку "воспроизведите промежуток"	
-	function repeat_show () 
-	{
-		put_button_text ();
-		$( "#repeat" ).show();
-		timedText();
-	}
+	
 	
 	//показывает кнопку "клик", которую должен нажимать пользователь
 	function person_time_button ()
@@ -159,12 +172,12 @@
 		$("#end").show();
 	}
 	
-	/* //меняет надпись на кнопке
+	//меняет надпись на кнопке
 	function put_button_text (message)
 	{
-		$( "#button" ).text(message);
+		$( "#repeat" ).text(message);
 	}
-	 */
+	
 	
 	
 	
