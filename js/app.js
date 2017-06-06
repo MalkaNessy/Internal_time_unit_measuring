@@ -111,7 +111,7 @@
 		console.log("data[0].temp_result: " + data[count].temp_result);
 		
 		console.log("count: " + count);
-		document.getElementById("demo").innerHTML = "start равен " + data[count].start+ " ms, " + "end  равен " + data[count].end+ " ms, " + "temp_result  равен " + data[count].temp_result+ " ms ";
+		document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms ";
 		set_time (1);
 		count++;
 	}
@@ -188,8 +188,8 @@
 		console.log ("set_time start");
 		console.log ("data[id].start: " + data[id].start);
 		document.getElementById("start"+id).value = data[id].start;
-		document.getElementById("end"+id).innerHTML = data[id].end;
-		document.getElementById("temp_result"+id).innerHTML = data[id].temp_result;
+		document.getElementById("end"+id).value = data[id].end;
+		document.getElementById("temp_result"+id).value = data[id].temp_result;
 	}
 	
 	
@@ -226,7 +226,7 @@ $(document).ready(function()
 	
 	
 	$("#signal").hide();
-	/* $("#p_tau").hide(); */
+	$("#p_tau").hide();
 	 
 });
 
