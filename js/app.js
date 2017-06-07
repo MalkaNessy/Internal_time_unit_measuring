@@ -94,6 +94,8 @@
 	{
 		$("#click").show();
 	}
+	*/
+	
 	
 	//откладывает появление кнопки "клик", которую должен нажимать пользователь
 	function starter() 
@@ -101,26 +103,26 @@
 		setTimeout(start_button_show, 3000);
 		setTimeout(end_button_show, 3000)
 	}
- */
+ 
 	
 	 
 	///////////// Воспроизведение промежутка //////////////
-	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0},
-			   2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
-			   3: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
-			   4: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
-			   5: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0},
-			   6: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
-			   7: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
-			   8: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
-			   9: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
-			   10: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
-			   11: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0},
-			   12: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
-			   13: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
-			   14: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
-			   15: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
-			   16: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0}
+	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   3: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   4: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   5: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   6: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   7: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   8: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   9: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   10: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   11: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   12: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   13: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   14: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   15: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   16: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0}
 
 	};
 	
@@ -134,6 +136,7 @@
 	var start;
 	var end;
 	var temp_result;
+	var result;
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
 	var count=1;
 	function start_click () 
@@ -150,23 +153,30 @@
 	//фиксирует время в момент конца воспроизводимого промежутка, второй клик
 	function end_click () 
 	{
+		console.log("count: " + count);
+		
 		end = new Date; // конец измерения
 		end_ms = end.getMilliseconds(); 
-		console.log("end: " + end_ms);
+		////////////console.log("end: " + end_ms);
 		data[count].end = end_ms;
-		console.log("data[0].end: " + data[count].end);
+		////////////console.log("data[0].end: " + data[count].end);
+		
 		temp_result = end - start;
 		data[count].temp_result = temp_result;
-		console.log("temp_result: " + temp_result);
-		console.log("data[0].temp_result: " + data[count].temp_result);
-		
-		console.log("count: " + count);
-		document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms ";
+		/////////////console.log("temp_result: " + temp_result);
+		/////////////console.log("data[0].temp_result: " + data[count].temp_result);
+		/////////////console.log("data[count].interval: " + data[count].interval);
+		result = temp_result/data[count].interval;
+		result = Math.round(result * 1000) / 1000 ;
+		data[count].result = result;
+		/////////////console.log("result: " + result);
+		document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
 		set_time (count);
 		count++;
 	}
 	
-	
+	/* var n = 3.456;
+	alert( Math.round(n * 100) / 100 ); // 3.456 -> 345.6 -> 346 -> 3.46 */
 	
 	
 	
@@ -207,7 +217,7 @@
 		var average;
 		for (var i = 1; i < 17; i++) {
 			
-			sum += data[i].temp_result;
+			sum += data[i].result;
 			taucount++;
 			
 		}
@@ -215,6 +225,7 @@
 		console.log("taucount: " + taucount);
 		console.log("sum: " + sum);
 		console.log("average: " + average);
+		document.getElementById("tau").innerHTML = average;
 	}
 	
 		
@@ -226,6 +237,7 @@
 		document.getElementById("start"+id).value = data[id].start;
 		document.getElementById("end"+id).value = data[id].end;
 		document.getElementById("temp_result"+id).value = data[id].temp_result;
+		document.getElementById("result"+id).value = data[id].result;
 	}
 	
 	
