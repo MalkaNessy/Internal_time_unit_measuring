@@ -1,52 +1,40 @@
 	/////////// главное меню /////////////////////////////
 	
-	//показывает текст статьи о методе
-	function about_show ()
+	//меняет css-класс кнопки на "selected" и обрано
+	function hide_unselected () 
 	{
-		$("#page #p_about").toggle();
+		$(".onpage").hide();
+		$(".menu").removeClass("selected");
 	}
 	
-	//показывает текст инструкции
-	function todo_show ()
+	//показывает текст статьи "о методе" и меняет вид нажатой кнопки меню
+	 function click_about_show () 
 	{
-		$("#page #p_todo").toggle();
-	}
+		
+		hide_unselected () 
+		$("#page #p_about").show();
+		$( "#about" ).addClass("selected");
+		/* $("#page #p_about").toggle();
+		$( "#about" ).toggleClass("selected"); */
+	} 
+	
+		
+	//показывает текст статьи "инструкция" и меняет вид нажатой кнопки меню
+	 function click_todo_show () //??? требуется дабл-клик вместо клика
+	{
+		hide_unselected () 
+		$("#page #p_todo").show();
+		$( "#todo" ).addClass("selected");
+	} 
 	
 	//показывает таблицу результатов
 	function click_results ()
 	{
-		$("#start").hide();
-		$("#end").hide();
-		$("#page #p_tau").toggle();
+		hide_unselected ()
+		/* $("#start").hide();
+		$("#end").hide(); */
+		$("#page #p_tau").show();
 	}
-	
-	//меняет css-класс кнопки на "selected" и обрано
-	function selected (id) 
-	{
-		$( id ).toggleClass("selected");
-	}
-	
-	//показывает текст статьи "о методе" и меняет вид нажатой кнопки меню
-	 function click_about_show () //??? требуется дабл-клик вместо клика
-	{
-		$("#about").click(function(){
-			selected (this);
-			about_show ();
-			
-		});			
-	} 
-	
-	//показывает текст статьи "о методе" и меняет вид нажатой кнопки меню
-	 function click_todo_show () //??? требуется дабл-клик вместо клика
-	{
-		$("#todo").click(function(){
-			selected (this);
-			todo_show ();
-			//$( this ).toggleClass("selected"); 
-		});			
-	} 
-	
-	
 	
 	
 	
@@ -88,8 +76,8 @@
 	 
 	 
 	/////////////Воспроизведение промежутка//////////////
-	var data ={1: {"start": 0, "end": 0, "temp_result": 0},
-			   2: {"start": 0, "end": 0, "temp_result": 0}
+	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0},
+			   2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0}
 
 	};
 	
@@ -176,7 +164,15 @@
 		$( "#repeat" ).text(message);
 	}
 	
+	////////////// подсчет результатов //////////////////
 	
+	function tau ()
+	{
+		for (var i = 1; i < data.length; i++) {
+			console.log("klklkl");
+		}
+		
+	}
 	
 	
 	
@@ -228,7 +224,7 @@
 	
 $(document).ready(function()
 {
-	$("#p_about").hide();
+	/* $("#p_about").hide();
 	$("#p_todo").hide();
 	$("#button").hide();
 	$("#start").hide();
@@ -237,7 +233,7 @@ $(document).ready(function()
 	
 	
 	$("#signal").hide();
-	$("#p_tau").hide();
-	 
+	$("#p_tau").hide(); */
+	 $(".onpage").hide();
 });
 

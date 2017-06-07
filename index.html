@@ -19,31 +19,31 @@
 <div id="wrapper"> 
     <header>
 		<ul>
-			<li id="about" onclick = "click_about_show();">О методе</li>
-			<li id="todo" onclick = "click_todo_show();">Прочесть инструкцию</li>
-			<li id="simulation" onclick="click_simulation()">Тренировка</li>
-			<li id="test" onclick="click_simulation()">Начать тест</li>
-			<li id="tau" onclick="click_results()">Результаты</li>
+			<li class="menu" id="about" onclick = "click_about_show();">О методе</li>
+			<li class="menu" id="todo" onclick = "click_todo_show();">Прочесть инструкцию</li>
+			<li class="menu" id="simulation" onclick="click_simulation()">Тренировка</li>
+			<li class="menu" id="test" onclick="tau()">Начать тест</li>
+			<li class="menu" id="tau" onclick="click_results()">Результаты</li>
 			
 		</ul>
 	</header>
 	
-	<div id="page">
+<div id="page">
 	
 	<p id="demo">Чтобы узнать свою единицу времени, нажмите на пункт меню "Тренировка" или "Начать тест".</p>
 		
 	
-		<div class="text" id="p_about">
+		<div class="text onpage" id="p_about">
 		Статья о методике о методике о методике о методике о методике о методике о методике
 		</div>
 		
-		<div class="text" id="p_todo">
+		<div class="text onpage" id="p_todo">
 		Инструкция инструкция инструкция инструкция инструкция инструкция инструкция
 		</div>
 		
 				
 		
-		<div  id="p_tau" >
+		<div class="onpage" id="p_tau" >
 			<input class="temp" id="1" value="2000">
 			<input  id="start1" value="">
 			<input  id="end1" value="">
@@ -111,29 +111,31 @@
 			<input class="temp" id="16" value="2000">
 			<input type="text" id="start16" value="">
 			<input type="text" id="end16" value="">
-			<input type="text" id="temp_result16" value=""><br> 
+			<input type="text" id="temp_result16" value=""><br>
+			<br>
+			Tau = <input class="temp" id="tau" value="">
 		</div>
 		
 		
 		<!-- <button onclick="timedText()">Try it</button> -->
 		
-		<div class= "button" id="button">
+		<div class= "button onpage" id="button">
 			Внимание
 		</div>
 		
-		<div class= "button" id="repeat">
+		<div class= "button onpage" id="repeat">
 			начало промежутка
 		</div>
 		
-		<div class= "button" id="start" onclick="start_click()">
+		<div class= "button onpage" id="start" onclick="start_click()">
 			Start
 		</div>
-		<div class= "button" id="end" onclick="end_click()">
+		<div class= "button onpage" id="end" onclick="end_click()">
 			End
 		</div>
 		
-	</div>		
-	<!-- <a href="#">текст ссылки</a> -->	
+</div>		
+	
 </div>  
 </body>
 	
