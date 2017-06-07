@@ -13,8 +13,10 @@
 	}
 	
 	//показывает таблицу результатов
-	function tau_show ()
+	function click_results ()
 	{
+		$("#start").hide();
+		$("#end").hide();
 		$("#page #p_tau").toggle();
 	}
 	
@@ -150,16 +152,12 @@
 			setTimeout(end_button_show, 3000)
 		}
 	
-	//запускает всю процедуру отмеривания после нажатия на пункт меню
-	
-	function user_signal ()
+	//запускает всю процедуру отмеривания после нажатия на пункт меню "Симуляция"
+	function click_simulation()
 	{
-		
-			console.log("user_signal for start: " );
-		
-			attention_show ();
-			starter();
-			
+		console.log("click_simulation start: " );
+		attention_show ();
+		starter();
 	}
 	
 	function start_button_show()
