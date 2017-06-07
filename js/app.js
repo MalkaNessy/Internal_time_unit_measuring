@@ -36,7 +36,13 @@
 		$("#page #p_tau").show();
 	}
 	
-	
+	//выводит заданные интервалы в таблицу результатов
+	function set_intervals ()
+	{
+		for (var i = 1; i < 17; i++) {
+			document.getElementById(i).value = data[i].interval;
+		}
+	}
 	
 	
 	/////////////кнопка "Внимание"//////////////
@@ -73,22 +79,57 @@
 		/* timedText(interval); *
 	} */
 	 
+	
+	///////// демонстрация промежутка /////////
+
+	//подает звуковой сигнал
+	function playAudio() {
+		var x = document.getElementById("myAudio");
+		console.log("x: " + x);		
+		x.play(); 
+	}	
+
+	/* //показывает кнопку "клик", которую должен нажимать пользователь
+	function person_time_button ()
+	{
+		$("#click").show();
+	}
+	
+	//откладывает появление кнопки "клик", которую должен нажимать пользователь
+	function starter() 
+	{ 
+		setTimeout(start_button_show, 3000);
+		setTimeout(end_button_show, 3000)
+	}
+ */
+	
 	 
-	 
-	/////////////Воспроизведение промежутка//////////////
+	///////////// Воспроизведение промежутка //////////////
 	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0},
-			   2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0}
+			   2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
+			   3: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
+			   4: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
+			   5: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0},
+			   6: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
+			   7: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
+			   8: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
+			   9: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
+			   10: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
+			   11: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0},
+			   12: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
+			   13: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0},
+			   14: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0},
+			   15: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0},
+			   16: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0}
 
 	};
 	
-	/* var new_post = {id: new_post_id, type: "post", text: input_text, title: input_title, comments: {}};
-	this.data[new_post_id]=new_post; */
-	
-	function add_to_data (count)
+		
+	/* function add_to_data (count)
 	{
 		var new_result = {"start": start, "end": end, "temp_result": temp_result};
 		data[count]=new_result; 
-	}
+	} */
 	
 	var start;
 	var end;
@@ -97,7 +138,7 @@
 	var count=1;
 	function start_click () 
 	{
-		add_to_data (count);
+		/* add_to_data (count); */
 		start = new Date(); // засекли время
 		start_ms = start.getMilliseconds(); 
 		console.log("start-ms: " + start_ms);
@@ -127,18 +168,7 @@
 	
 	
 	
-	//показывает кнопку "клик", которую должен нажимать пользователь
-	function person_time_button ()
-	{
-		$("#click").show();
-	}
 	
-	//откладывает появление кнопки "клик", которую должен нажимать пользователь
-	function starter() 
-		{ 
-			setTimeout(start_button_show, 3000);
-			setTimeout(end_button_show, 3000)
-		}
 	
 	//запускает всю процедуру отмеривания после нажатия на пункт меню "Симуляция"
 	function click_simulation()
@@ -164,32 +194,31 @@
 		$( "#repeat" ).text(message);
 	}
 	
+	
+	
 	////////////// подсчет результатов //////////////////
 	
+	//считает тау - среднее арифметическое промежуточных результатов
 	function tau ()
 	{
-		for (var i = 1; i < data.length; i++) {
-			console.log("klklkl");
+		console.log("tau start ");
+		var taucount = 0;
+		var sum = 0;
+		var average;
+		for (var i = 1; i < 17; i++) {
+			
+			sum += data[i].temp_result;
+			taucount++;
+			
 		}
+		average = sum/taucount;
+		console.log("taucount: " + taucount);
+		console.log("sum: " + sum);
+		console.log("average: " + average);
+	}
+	
 		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	function tau_temp ()
-	{
-		var input=$("#search_input").val().toString();
-	}
-	
+	//берет данные теста из массива и помещает в таблицу результатов
 	function set_time (id)
 	{
 		console.log ("set_time start");
@@ -215,6 +244,14 @@
 		
 	}
 	 */
+/*
+
+
+
+
+
+*/
+
 
 	/* function isNormalInteger(str) 
 	{
@@ -222,18 +259,17 @@
 		return String(n) === str && n >= 0;
 	} */
 	
+	
+		
 $(document).ready(function()
 {
-	/* $("#p_about").hide();
-	$("#p_todo").hide();
-	$("#button").hide();
-	$("#start").hide();
-	$("#end").hide();
-	$("#repeat").hide();
+		
+	$(".onpage").hide();
+	set_intervals ();
+	
+	 
+	/* console.log("myAudio: " + x); */
 	
 	
-	$("#signal").hide();
-	$("#p_tau").hide(); */
-	 $(".onpage").hide();
 });
 

@@ -8,6 +8,8 @@
 	  <link href='https://fonts.googleapis.com/css?family=Meie+Script|Molle:400italic' rel='stylesheet' type='text/css'>
 	  	  <link rel="stylesheet" href="css/style.css">
 	  <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+	  
+	  
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script> -->
 	  
@@ -22,7 +24,7 @@
 			<li class="menu" id="about" onclick = "click_about_show();">О методе</li>
 			<li class="menu" id="todo" onclick = "click_todo_show();">Прочесть инструкцию</li>
 			<li class="menu" id="simulation" onclick="click_simulation()">Тренировка</li>
-			<li class="menu" id="test" onclick="tau()">Начать тест</li>
+			<li class="menu" id="test" onclick = "playAudio()">Начать тест</li>
 			<li class="menu" id="tau" onclick="click_results()">Результаты</li>
 			
 		</ul>
@@ -123,6 +125,11 @@
 			Внимание
 		</div>
 		
+		<audio class="onpage" id="myAudio">
+		  <source src="beep01.wav" type="audio/mpeg">
+	    </audio>
+	  
+	  
 		<div class= "button onpage" id="repeat">
 			начало промежутка
 		</div>
