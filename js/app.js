@@ -180,7 +180,7 @@
 	
 	
 	
-	//запускает всю процедуру отмеривания после нажатия на пункт меню "Симуляция"
+	//запускает всю процедуру отмеривания после нажатия на пункт меню "Тренировка"
 	function click_simulation()
 	{
 		console.log("click_simulation start: " );
@@ -208,6 +208,8 @@
 	
 	////////////// подсчет результатов //////////////////
 	
+	
+	
 	//считает тау - среднее арифметическое промежуточных результатов
 	function tau ()
 	{
@@ -222,6 +224,7 @@
 			
 		}
 		average = sum/taucount;
+		average = Math.round(average * 1000) / 1000 ;
 		console.log("taucount: " + taucount);
 		console.log("sum: " + sum);
 		console.log("average: " + average);
