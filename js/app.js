@@ -39,8 +39,8 @@
 	//выводит заданные интервалы в таблицу результатов
 	function set_intervals ()
 	{
-		for (var i = 1; i < 17; i++) {
-			document.getElementById(i).value = data[i].interval;
+		for (var i = 1; i <= Object.keys(intervals).length; i++) {
+			document.getElementById(i).value = intervals[i];
 		}
 	}
 	
@@ -108,7 +108,7 @@
 	 
 	///////////// Воспроизведение промежутка //////////////
 	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
+			   /* 2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
 			   3: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
 			   4: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
 			   5: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
@@ -123,7 +123,7 @@
 			   14: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
 			   15: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
 			   16: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0}
-
+ */
 	};
 	////////////////* Object.keys(data).length */
 	var intervals = {1:2000, 2:3000, 3:4000, 4:5000, 5:2000, 6:4000, 7:3000, 8:5000, 9:3000,
@@ -131,11 +131,9 @@
 	
 	
 	
-	/* function add_row_to_data (count)
-	{
-		var new_result = {"interval":intervals[count] ,"start": start, "end": end, "temp_result": temp_result};
-		data[count]=new_result; 
-	} */
+	
+	
+	var pressed = false;
 	
 	var start;
 	var end;
@@ -145,12 +143,17 @@
 	var count=1;
 	function start_click () 
 	{
-		/* add_to_data (count); */
-		start = new Date(); // засекли время
-		start_ms = start.getMilliseconds(); 
-		console.log("start-ms: " + start_ms);
-		data[count].start = start_ms;
-		console.log("data[0].start: " + data[count].start);
+		if(!pressed)
+		{
+			start_date = new Date(); // засекли время
+			start = start_date.valueOf();
+			pressed = true;
+
+				
+			console.log("start: " + start);
+			//data[count].start = start_ms;
+			///////////console.log("data[0].start: " + data[count].start);
+		}
 	}
 	
 	
@@ -158,29 +161,38 @@
 	function end_click () 
 	{
 		console.log("count: " + count);
-		
-		end = new Date; // конец измерения
-		end_ms = end.getMilliseconds(); 
-		////////////console.log("end: " + end_ms);
-		data[count].end = end_ms;
-		////////////console.log("data[0].end: " + data[count].end);
-		
-		temp_result = end - start;
-		data[count].temp_result = temp_result;
-		/////////////console.log("temp_result: " + temp_result);
-		/////////////console.log("data[0].temp_result: " + data[count].temp_result);
-		/////////////console.log("data[count].interval: " + data[count].interval);
-		result = temp_result/data[count].interval;
-		result = Math.round(result * 1000) / 1000 ;
-		data[count].result = result;
-		/////////////console.log("result: " + result);
-		document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
-		set_time (count);
-		count++;
+		if (pressed)
+		{
+			end_date = new Date; // конец измерения
+			end = end_date.valueOf(); 
+			console.log("end: " + end);
+						
+			temp_result = end - start;
+			console.log("temp_result: " + temp_result);
+			console.log("intervals.count: " + intervals[count]);
+			result = temp_result/intervals[count];
+			result = Math.round(result * 1000) / 1000 ;
+			console.log("result: " + result);
+			//document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
+			add_row_to_data (count);
+			set_time (count);
+			
+			pressed = false;
+			count++;
+		}
 	}
 	
-	/* var n = 3.456;
-	alert( Math.round(n * 100) / 100 ); // 3.456 -> 345.6 -> 346 -> 3.46 */
+	function add_row_to_data (count)
+	{
+		console.log("add_row_to_data start")
+		var new_result = {"interval":intervals[count] ,"start": start, "end": end, "temp_result": temp_result, "result": result};
+		console.log("new_result:start " + new_result.start.valueOf());
+		console.log("new_result:end " + new_result.end.valueOf());
+		data[count]=new_result; 
+	}
+	
+	
+	
 	
 	
 	
@@ -232,7 +244,7 @@
 		console.log("taucount: " + taucount);
 		console.log("sum: " + sum);
 		console.log("average: " + average);
-		document.getElementById("tau").innerHTML = average;
+		document.getElementById("tau").value = average;
 	}
 	
 		
@@ -248,28 +260,9 @@
 	}
 	
 	
-	
-	/* function set_time (id) 
-	{
-		
-		var time = document.getElementById("time"+id).value;
-		console.log('time+id: ' + ("time"+id));
-		console.log('time: ' + time);
-		var interval = document.getElementById(id).value;
-		console.log('interval: ' + interval);
-		var tau_temp = time/interval;
-		console.log('tau_temp: ' + tau_temp);
-		document.getElementById("result"+id).value = tau_temp;
-		
-	}
-	 */
-/*
 
-
-
-
-
-*/
+	/* var n = 3.456;
+	alert( Math.round(n * 100) / 100 ); // 3.456 -> 345.6 -> 346 -> 3.46 */
 
 
 	/* function isNormalInteger(str) 
