@@ -50,9 +50,8 @@
 	//показывает кнопку "внимание" 
 	function attention_show () 
 	{
-		//put_button_text ();
 		$( "#button" ).show();
-		timedText(2000);
+		timedText(1000);
 	}
 		
 	//откладывает исчезновение кнопки "внимание" на время
@@ -96,6 +95,11 @@
 	}
 	*/
 	
+	function demonstration () 
+	{
+		attention_show (); 
+		
+	}
 	
 	//откладывает появление кнопки "клик", которую должен нажимать пользователь
 	function starter() 
@@ -104,7 +108,11 @@
 		setTimeout(end_button_show, 3000)
 	}
  
-	
+	function set_stimul (count)
+	{
+		playAudio();
+		setTimeout(playAudio, intervals[count])
+	}
 	 
 	///////////// Воспроизведение промежутка //////////////
 	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
@@ -139,8 +147,10 @@
 	var end;
 	var temp_result;
 	var result;
-	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
 	var count=1;
+	
+	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
+	
 	function start_click () 
 	{
 		if(!pressed)
