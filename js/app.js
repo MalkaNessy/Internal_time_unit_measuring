@@ -20,7 +20,7 @@
 	
 		
 	//показывает текст статьи "инструкция" и меняет вид нажатой кнопки меню
-	 function click_todo_show () //??? требуется дабл-клик вместо клика
+	 function click_todo_show () 
 	{
 		hide_unselected () 
 		$("#page #p_todo").show();
@@ -125,11 +125,15 @@
 			   16: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0}
 
 	};
+	////////////////* Object.keys(data).length */
+	var intervals = {1:2000, 2:3000, 3:4000, 4:5000, 5:2000, 6:4000, 7:3000, 8:5000, 9:3000,
+	10:4000, 11:2000, 12:5000, 13:5000, 14:4000, 15:3000, 16:2000,}	
 	
-		
-	/* function add_to_data (count)
+	
+	
+	/* function add_row_to_data (count)
 	{
-		var new_result = {"start": start, "end": end, "temp_result": temp_result};
+		var new_result = {"interval":intervals[count] ,"start": start, "end": end, "temp_result": temp_result};
 		data[count]=new_result; 
 	} */
 	
@@ -217,14 +221,14 @@
 		var taucount = 0;
 		var sum = 0;
 		var average;
-		for (var i = 1; i < 17; i++) {
+		for (var i = 1; i < Object.keys(data).length; i++) {
 			
 			sum += data[i].result;
 			taucount++;
 			
 		}
 		average = sum/taucount;
-		average = Math.round(average * 1000) / 1000 ;
+		average = Math.round(average * 100) / 100 ;
 		console.log("taucount: " + taucount);
 		console.log("sum: " + sum);
 		console.log("average: " + average);
