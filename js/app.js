@@ -225,14 +225,14 @@
 	////////////// подсчет результатов //////////////////
 	
 	
-	
+	var average;
 	//считает тау - среднее арифметическое промежуточных результатов
 	function tau ()
 	{
 		console.log("tau start ");
 		var taucount = 0;
 		var sum = 0;
-		var average;
+		
 		for (var i = 1; i < Object.keys(data).length; i++) {
 			
 			sum += data[i].result;
@@ -241,10 +241,11 @@
 		}
 		average = sum/taucount;
 		average = Math.round(average * 100) / 100 ;
+		document.getElementById("tau_result").value = average;
 		console.log("taucount: " + taucount);
 		console.log("sum: " + sum);
 		console.log("average: " + average);
-		document.getElementById("tau").value = average;
+		
 	}
 	
 		
