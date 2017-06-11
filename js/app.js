@@ -67,14 +67,15 @@
 	{
 		console.log("button_hide start" );
 		$( "#button" ).hide();
+		set_stimul (count);
 	}	
 	
 	//убирает с экрана кнопку "внимание"	
 	function attention_hide() {
 		console.log("attention_hide()start" );
 		$( "#button" ).hide();
-		button_hide();
-		set_stimul (count);
+		setTimeout(button_hide, 1000)
+		
 		
 	}
 	
@@ -175,11 +176,12 @@
 			start_date = new Date(); // засекли время
 			start = start_date.valueOf();
 			pressed = true;
-
-				
+			console.log("pressed = " + pressed);
 			console.log("start: " + start);
-			//data[count].start = start_ms;
-			///////////console.log("data[0].start: " + data[count].start);
+		}
+		else 
+		{
+			end_click();
 		}
 	}
 	
@@ -205,6 +207,7 @@
 			set_time (count);
 			
 			pressed = false;
+			console.log("pressed = " + pressed);
 			count++;
 		}
 	}
