@@ -44,28 +44,65 @@
 		}
 	}
 	
+	//подает звуковой сигнал
+	function playAudio() {
+		console.log("playAudio() start" )
+		var x = document.getElementById("myAudio");
+		console.log("x: " + x);		
+		x.play();
+	}
 	
 	/////////////кнопка "Внимание"//////////////
 	
 	//показывает кнопку "внимание" 
 	function attention_show () 
 	{
+		console.log("attention_show()start" )
 		$( "#button" ).show();
-		timedText(1000);
-	}
-		
-	//откладывает исчезновение кнопки "внимание" на время
-	function timedText(interval) 
-	{ 
-		setTimeout(myTimeoutAttention, interval)  
+		//timedText(1000);
+		setTimeout(attention_hide, 1000)
 	}
 	
-	//убирает с экрана кнопку "внимание"	
-	function myTimeoutAttention() {
+	function button_hide()
+	{
+		console.log("button_hide start" );
 		$( "#button" ).hide();
-		document.getElementById("demo").innerHTML = "Воспроизведите промежуток";
-		/* repeat_show (2000, "конец промежутка") */
+	}	
+	
+	//убирает с экрана кнопку "внимание"	
+	function attention_hide() {
+		console.log("attention_hide()start" );
+		$( "#button" ).hide();
+		button_hide();
+		set_stimul (count);
+		
 	}
+	
+	// подает звуковые сигналы в заданном промежутке 
+	function set_stimul (count)
+	{
+		console.log("set_stimul (count) start, count: " + count)
+		playAudio();
+		setTimeout(playAudio, intervals[count]);
+		setTimeout(click_show, intervals[count*6]);
+	}
+	
+	
+	//показывает кнопку "клик", которую должен нажимать пользователь
+	function click_show ()
+	{
+		console.log("click_show start" )
+		$("#click").show();
+	}
+	
+	
+	//запускает всю процедуру отмеривания после нажатия на пункт меню "Тренировка"
+	function click_simulation()
+	{
+		console.log("click_simulation start: " );
+		attention_show ();
+	} 
+	
 	
 	//показывает кнопку "воспроизведите промежуток"	
 	/* function repeat_show (interval, message) 
@@ -81,38 +118,19 @@
 	
 	///////// демонстрация промежутка /////////
 
-	//подает звуковой сигнал
-	function playAudio() {
-		var x = document.getElementById("myAudio");
-		console.log("x: " + x);		
-		x.play(); 
-	}	
-
-	/* //показывает кнопку "клик", которую должен нажимать пользователь
-	function person_time_button ()
-	{
-		$("#click").show();
-	}
-	*/
-	
-	function demonstration () 
-	{
-		attention_show (); 
 		
-	}
-	
 	//откладывает появление кнопки "клик", которую должен нажимать пользователь
-	function starter() 
+	/* function starter() 
 	{ 
 		setTimeout(start_button_show, 3000);
 		setTimeout(end_button_show, 3000)
-	}
+	} */
  
-	function set_stimul (count)
-	{
-		playAudio();
-		setTimeout(playAudio, intervals[count])
-	}
+	
+	 
+	
+	 
+	 
 	 
 	///////////// Воспроизведение промежутка //////////////
 	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
@@ -150,7 +168,6 @@
 	var count=1;
 	
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
-	
 	function start_click () 
 	{
 		if(!pressed)
@@ -206,13 +223,7 @@
 	
 	
 	
-	//запускает всю процедуру отмеривания после нажатия на пункт меню "Тренировка"
-	function click_simulation()
-	{
-		console.log("click_simulation start: " );
-		attention_show ();
-		starter();
-	}
+	
 	
 	function start_button_show()
 	{
@@ -224,11 +235,6 @@
 		$("#end").show();
 	}
 	
-	//меняет надпись на кнопке
-	function put_button_text (message)
-	{
-		$( "#repeat" ).text(message);
-	}
 	
 	
 	
