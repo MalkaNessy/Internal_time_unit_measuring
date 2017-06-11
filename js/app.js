@@ -52,17 +52,25 @@
 		x.play();
 	}
 	
-	/////////////кнопка "Внимание"//////////////
+	///////// демонстрация промежутка /////////
 	
-	//показывает кнопку "внимание" 
+	//показывает кнопку "внимание" в заданном промежутке
 	function attention_show () 
 	{
 		console.log("attention_show()start" )
-		$( "#button" ).show();
+		setTimeout(button_show, 1000);
 		//timedText(1000);
-		setTimeout(attention_hide, 1000)
+		setTimeout(attention_hide, 2000)
 	}
 	
+	//показывает кнопку "внимание" 
+	function button_show()
+	{
+		console.log("button_show start" );
+		$( "#button" ).show();
+	}
+	
+	//прячет кнопку "внимание" и запускает звуковой стимул
 	function button_hide()
 	{
 		console.log("button_hide start" );
@@ -70,7 +78,7 @@
 		set_stimul (count);
 	}	
 	
-	//убирает с экрана кнопку "внимание"	
+	//убирает с экрана кнопку "внимание" и запускает звуковой стимул через промежуток	
 	function attention_hide() {
 		console.log("attention_hide()start" );
 		$( "#button" ).hide();
@@ -85,11 +93,11 @@
 		console.log("set_stimul (count) start, count: " + count)
 		playAudio();
 		setTimeout(playAudio, intervals[count]);
-		setTimeout(click_show, intervals[count*6]);
+		setTimeout(click_show, (intervals[count]+1000));
 	}
 	
 	
-	//показывает кнопку "клик", которую должен нажимать пользователь
+	//показывает кнопку "Воспроизведите промежуток", которую должен нажимать пользователь
 	function click_show ()
 	{
 		console.log("click_show start" )
@@ -101,35 +109,17 @@
 	function click_simulation()
 	{
 		console.log("click_simulation start: " );
+		$(".onpage").hide();
 		attention_show ();
 	} 
 	
 	
-	//показывает кнопку "воспроизведите промежуток"	
-	/* function repeat_show (interval, message) 
-	{
-		console.log("repeat_show start");
-		$( "#repeat" ).show();
-		timedText(interval);
-		put_button_text (message);
-		timedText(interval/2);
-		/* timedText(interval); *
-	} */
+	
 	 
 	
-	///////// демонстрация промежутка /////////
+	
 
 		
-	//откладывает появление кнопки "клик", которую должен нажимать пользователь
-	/* function starter() 
-	{ 
-		setTimeout(start_button_show, 3000);
-		setTimeout(end_button_show, 3000)
-	} */
- 
-	
-	 
-	
 	 
 	 
 	 
@@ -171,13 +161,14 @@
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
 	function start_click () 
 	{
+		console.log("start_click start");
 		if(!pressed)
 		{
 			start_date = new Date(); // засекли время
 			start = start_date.valueOf();
 			pressed = true;
 			console.log("pressed = " + pressed);
-			console.log("start: " + start);
+			
 		}
 		else 
 		{
@@ -189,6 +180,7 @@
 	//фиксирует время в момент конца воспроизводимого промежутка, второй клик
 	function end_click () 
 	{
+		console.log("end_click start");
 		console.log("count: " + count);
 		if (pressed)
 		{
@@ -208,7 +200,13 @@
 			
 			pressed = false;
 			console.log("pressed = " + pressed);
-			count++;
+			
+			if (count<=15){
+				click_simulation();
+				count++;
+				
+			}
+			else {console.log("to results, count= " + count)}
 		}
 	}
 	
@@ -252,17 +250,18 @@
 		var taucount = 0;
 		var sum = 0;
 		
-		for (var i = 1; i < Object.keys(data).length; i++) {
+		for (var i = 0; i < Object.keys(data).length; i++) {
 			
-			sum += data[i].result;
+			sum += data[i+1].result;
+			console.log("sum: " + sum);
 			taucount++;
-			
+			console.log("taucount: " + taucount);
 		}
 		average = sum/taucount;
 		average = Math.round(average * 100) / 100 ;
 		document.getElementById("tau_result").value = average;
-		console.log("taucount: " + taucount);
-		console.log("sum: " + sum);
+		
+		
 		console.log("average: " + average);
 		
 	}
@@ -295,13 +294,8 @@
 		
 $(document).ready(function()
 {
-		
 	$(".onpage").hide();
 	set_intervals ();
-	
-	 
-	/* console.log("myAudio: " + x); */
-	
-	
+		
 });
 
