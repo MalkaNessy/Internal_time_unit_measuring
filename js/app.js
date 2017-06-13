@@ -28,11 +28,12 @@
 	} 
 	
 	//показывает таблицу результатов
-	function click_results ()
+	function results_show ()
 	{
 		hide_unselected ()
-		/* $("#start").hide();
-		$("#end").hide(); */
+		$( "#tau" ).addClass("selected");
+		$("#click").hide();
+		
 		$("#page #p_tau").show();
 	}
 	
@@ -164,6 +165,7 @@
 		console.log("start_click start");
 		if(!pressed)
 		{
+			$( "#click" ).addClass("clicked");
 			start_date = new Date(); // засекли время
 			start = start_date.valueOf();
 			pressed = true;
@@ -184,6 +186,7 @@
 		console.log("count: " + count);
 		if (pressed)
 		{
+			$( "#click" ).removeClass("clicked");
 			end_date = new Date; // конец измерения
 			end = end_date.valueOf(); 
 			console.log("end: " + end);
@@ -206,7 +209,12 @@
 				count++;
 				
 			}
-			else {console.log("to results, count= " + count)}
+			else 
+			{
+				console.log("to results, count= " + count);
+				$(".onpage").hide();
+				to_result_show();
+			}
 		}
 	}
 	
@@ -221,12 +229,16 @@
 	
 	
 	
+	function to_result_show()
+	{
+		
+		$("#toresult").show();
+	}
 	
 	
 	
 	
-	
-	function start_button_show()
+	/* function start_button_show()
 	{
 		$("#start").show();
 	}
@@ -235,7 +247,7 @@
 	{
 		$("#end").show();
 	}
-	
+	 */
 	
 	
 	
@@ -243,6 +255,8 @@
 	
 	
 	var average;
+	var c;
+	var c4;
 	//считает тау - среднее арифметическое промежуточных результатов
 	function tau ()
 	{
@@ -258,7 +272,7 @@
 			console.log("taucount: " + taucount);
 		}
 		average = sum/taucount;
-		average = Math.round(average * 100) / 100 ;
+		average = Math.round(average * 1000) / 1000 ;
 		document.getElementById("tau_result").value = average;
 		
 		
@@ -266,7 +280,37 @@
 		
 	}
 	
+	function bbc ()
+	{
+		console.log("bbc start, average = " + average );
+		c = average * 8.51;
+		c = Math.round(c * 1000) / 1000 ;
+		console.log("c: " + c);
+		document.getElementById("c_result").value = c;		
+	}
+	
+	function bbc_4 ()
+	{
+		console.log("bbc_4 start" );
+		c4 = c/4;
+		c4 = Math.round(c4 * 1000) / 1000 ;
+		console.log("c4: " + c4);
+		document.getElementById("c4_result").value = c4;
+	}
+	
+	function all_results ()
+	{
+		$(".onpage").hide();
 		
+		//$("#toresult").hide();
+		tau ();
+		bbc ();
+		bbc_4 ();
+		results_show();
+	}
+
+
+	
 	//берет данные теста из массива и помещает в таблицу результатов
 	function set_time (id)
 	{
@@ -283,7 +327,7 @@
 	/* var n = 3.456;
 	alert( Math.round(n * 100) / 100 ); // 3.456 -> 345.6 -> 346 -> 3.46 */
 
-
+//диснейленд, проводят карточки на проходной, проверить не остался ли кто без списка! а если остался, кто именно
 	/* function isNormalInteger(str) 
 	{
 		var n = Math.floor(Number(str));
@@ -295,6 +339,7 @@
 $(document).ready(function()
 {
 	$(".onpage").hide();
+	click_about_show ();
 	set_intervals ();
 		
 });

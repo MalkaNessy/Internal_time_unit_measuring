@@ -29,7 +29,7 @@ ul li {
 	font-size: 18px;
 	background-color: #d6b756;
 	padding: 10px ;
-	margin: 0 10px;
+	margin: 0 5px;
 	border: 1px solid brown;
 	border-radius: 5px;
 }
@@ -42,7 +42,7 @@ ul li {
 	padding: 10px;
 	width: 90%;
 	margin: auto;
-	background-color: white;
+	/* background-color: white; */
 	/* border: 1px solid brown; */
 	border-radius: 5px;
 }
@@ -51,32 +51,37 @@ ul li {
 	background-color: #e4d092;
 }
 
+.clicked {
+	background-color: yellow;
+}
 .button {
 	width: 150px;
 	font-size: 24px;
-	background-color: green;
+	background-color: LightGray;
 	padding: 20px ;
 	margin: auto;
 	margin-top: 30px;
-	border: 3px solid yellow;
+	border: 3px solid Green;
 	border-radius: 5px;
 	text-align: center;
 }
 
 #p_tau {
 	text-align: center;
-	/* margin: auto;
-	background-color: red; */
+}
+
+#p_todo, #p_about, #p_about ul {
+	text-align: left;
 }
 
 input {
 	margin: 2px;
 }
 
-#signal{
-	background-color: yellow;
-	width: 100px;
-	height: 50px;
+#click{
+	background-color: white;
+	/* width: 100px;
+	height: 50px; */
 	border-radius: 5%;
 	text-align: center;
 }
@@ -87,5 +92,5 @@ input {
 }
 
 .onpage {
-	/* background-color: yellow; */
+	
 }
