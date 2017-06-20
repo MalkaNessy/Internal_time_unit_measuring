@@ -1,6 +1,6 @@
 	/////////// главное меню /////////////////////////////
 	
-	//меняет css-класс кнопки на "selected" и обрано
+	//прячет все содержимое страницы, меняет css-класс кнопки на "selected" и обратно
 	function hide_unselected () 
 	{
 		$(".onpage").hide();
@@ -10,8 +10,7 @@
 	//показывает текст статьи "о методе" и меняет вид нажатой кнопки меню
 	 function click_about_show () 
 	{
-		
-		hide_unselected () 
+		hide_unselected(); 
 		$("#page #p_about").show();
 		$( "#about" ).addClass("selected");
 		/* $("#page #p_about").toggle();
@@ -22,7 +21,7 @@
 	//показывает текст статьи "инструкция" и меняет вид нажатой кнопки меню
 	 function click_todo_show () 
 	{
-		hide_unselected () 
+		hide_unselected (); 
 		$("#page #p_todo").show();
 		$( "#todo" ).addClass("selected");
 	} 
@@ -30,7 +29,7 @@
 	//показывает таблицу результатов
 	function results_show ()
 	{
-		hide_unselected ()
+		hide_unselected ();
 		$( "#tau" ).addClass("selected");
 		$("#click").hide();
 		
@@ -47,7 +46,7 @@
 	
 	//подает звуковой сигнал
 	function playAudio() {
-		console.log("playAudio() start" )
+		console.log("playAudio() start" );
 		var x = document.getElementById("myAudio");
 		console.log("x: " + x);		
 		x.play();
@@ -58,10 +57,10 @@
 	//показывает кнопку "внимание" в заданном промежутке
 	function attention_show () 
 	{
-		console.log("attention_show()start" )
+		console.log("attention_show()start" );
 		setTimeout(button_show, 1000);
 		//timedText(1000);
-		setTimeout(attention_hide, 2000)
+		setTimeout(attention_hide, 2000);
 	}
 	
 	//показывает кнопку "внимание" 
@@ -83,7 +82,7 @@
 	function attention_hide() {
 		console.log("attention_hide()start" );
 		$( "#button" ).hide();
-		setTimeout(button_hide, 1000)
+		setTimeout(button_hide, 1000);
 		
 		
 	}
@@ -91,7 +90,7 @@
 	// подает звуковые сигналы в заданном промежутке 
 	function set_stimul (count)
 	{
-		console.log("set_stimul (count) start, count: " + count)
+		console.log("set_stimul (count) start, count: " + count);
 		playAudio();
 		setTimeout(playAudio, intervals[count]);
 		setTimeout(click_show, (intervals[count]+1000));
@@ -101,21 +100,30 @@
 	//показывает кнопку "Воспроизведите промежуток", которую должен нажимать пользователь
 	function click_show ()
 	{
-		console.log("click_show start" )
+		console.log("click_show start" );
 		$("#click").show();
 	}
 	
 	
-	//запускает всю процедуру отмеривания после нажатия на пункт меню "Тренировка"
-	function click_simulation()
+	//запускает всю процедуру отмеривания после нажатия на пункт меню "Начать тест"
+	function click_test()
 	{
-		console.log("click_simulation start: " );
+		console.log("click_test start: " );
+		hide_unselected ();		
+		$( "#test" ).addClass("selected");
 		$(".onpage").hide();
 		attention_show ();
 	} 
 	
-	
-	
+	//запускает процедуру тренировки
+	function click_simulation()
+	{
+		console.log("click_simulation start: " );
+		hide_unselected ();		
+		$( "#simulation" ).addClass("selected");
+		//try_count = 3;
+		attention_show ();
+	} 
 	 
 	
 	
@@ -145,7 +153,7 @@
 	};
 	////////////////* Object.keys(data).length */
 	var intervals = {1:2000, 2:3000, 3:4000, 4:5000, 5:2000, 6:4000, 7:3000, 8:5000, 9:3000,
-	10:4000, 11:2000, 12:5000, 13:5000, 14:4000, 15:3000, 16:2000,}	
+	10:4000, 11:2000, 12:5000, 13:5000, 14:4000, 15:3000, 16:2000};	
 	
 	
 	
@@ -166,7 +174,7 @@
 		if(!pressed)
 		{
 			$( "#click" ).addClass("clicked");
-			start_date = new Date(); // засекли время
+			var start_date = new Date(); // засекли время
 			start = start_date.valueOf();
 			pressed = true;
 			console.log("pressed = " + pressed);
@@ -178,7 +186,7 @@
 		}
 	}
 	
-	
+	var try_count = 15;
 	//фиксирует время в момент конца воспроизводимого промежутка, второй клик
 	function end_click () 
 	{
@@ -187,7 +195,7 @@
 		if (pressed)
 		{
 			$( "#click" ).removeClass("clicked");
-			end_date = new Date; // конец измерения
+			var end_date = new Date(); // конец измерения
 			end = end_date.valueOf(); 
 			console.log("end: " + end);
 						
@@ -205,7 +213,7 @@
 			console.log("pressed = " + pressed);
 			
 			if (count<=15){
-				click_simulation();
+				click_test();
 				count++;
 				
 			}
@@ -220,7 +228,7 @@
 	
 	function add_row_to_data (count)
 	{
-		console.log("add_row_to_data start")
+		console.log("add_row_to_data start");
 		var new_result = {"interval":intervals[count] ,"start": start, "end": end, "temp_result": temp_result, "result": result};
 		console.log("new_result:start " + new_result.start.valueOf());
 		console.log("new_result:end " + new_result.end.valueOf());
@@ -300,8 +308,8 @@
 	
 	function all_results ()
 	{
-		$(".onpage").hide();
 		
+		//$(".onpage").hide();
 		//$("#toresult").hide();
 		tau ();
 		bbc ();

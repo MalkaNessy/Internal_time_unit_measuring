@@ -51,9 +51,7 @@ ul li {
 	background-color: #e4d092;
 }
 
-.clicked {
-	background-color: yellow;
-}
+
 .button {
 	width: 150px;
 	font-size: 24px;
@@ -79,12 +77,26 @@ input {
 }
 
 #click{
-	background-color: white;
+	/* background-color: white; */
 	/* width: 100px;
 	height: 50px; */
-	border-radius: 5%;
-	text-align: center;
+	/* border-radius: 5%; */
+  text-align: center;
+  border-radius: 15px;
+  box-shadow:6px 8px #999;
 }
+
+#click:active  {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* .clicked {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+} */
 
 .temp {
 	background-color: LightGray;
