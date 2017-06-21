@@ -4,17 +4,15 @@
 	function hide_unselected () 
 	{
 		$(".onpage").hide();
-		$(".menu").removeClass("selected");
 	}
 	
+		
 	//показывает текст статьи "о методе" и меняет вид нажатой кнопки меню
 	 function click_about_show () 
 	{
 		hide_unselected(); 
 		$("#page #p_about").show();
 		$( "#about" ).addClass("selected");
-		/* $("#page #p_about").toggle();
-		$( "#about" ).toggleClass("selected"); */
 	} 
 	
 		
@@ -30,10 +28,8 @@
 	function results_show ()
 	{
 		hide_unselected ();
-		$( "#tau" ).addClass("selected");
-		$("#click").hide();
-		
-		$("#page #p_tau").show();
+		$("#tau").addClass("selected");
+		$("#page #p_tau").toggle();
 	}
 	
 	//выводит заданные интервалы в таблицу результатов
@@ -108,20 +104,21 @@
 	//запускает всю процедуру отмеривания после нажатия на пункт меню "Начать тест"
 	function click_test()
 	{
+		//console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
+		//try_count = try_howmuch;
 		console.log("click_test start: " );
 		hide_unselected ();		
-		$( "#test" ).addClass("selected");
-		$(".onpage").hide();
 		attention_show ();
 	} 
 	
+	var try_count =0;
 	//запускает процедуру тренировки
-	function click_simulation()
+	function click_simulation(try_howmuch)
 	{
+		try_count = try_howmuch;
+		console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
 		console.log("click_simulation start: " );
 		hide_unselected ();		
-		$( "#simulation" ).addClass("selected");
-		//try_count = 3;
 		attention_show ();
 	} 
 	 
@@ -186,15 +183,16 @@
 		}
 	}
 	
-	var try_count = 15;
+	
 	//фиксирует время в момент конца воспроизводимого промежутка, второй клик
 	function end_click () 
 	{
 		console.log("end_click start");
 		console.log("count: " + count);
+		
 		if (pressed)
 		{
-			$( "#click" ).removeClass("clicked");
+			//$( "#click" ).removeClass("clicked");
 			var end_date = new Date(); // конец измерения
 			end = end_date.valueOf(); 
 			console.log("end: " + end);
@@ -212,8 +210,9 @@
 			pressed = false;
 			console.log("pressed = " + pressed);
 			
-			if (count<=15){
+			if (count<=try_count){
 				click_test();
+				
 				count++;
 				
 			}
@@ -241,23 +240,10 @@
 	{
 		
 		$("#toresult").show();
+		//all_results ();
 	}
 	
-	
-	
-	
-	/* function start_button_show()
-	{
-		$("#start").show();
-	}
 		
-	function end_button_show()
-	{
-		$("#end").show();
-	}
-	 */
-	
-	
 	
 	////////////// подсчет результатов //////////////////
 	
@@ -308,7 +294,8 @@
 	
 	function all_results ()
 	{
-		
+		hide_unselected ();
+		$(".menu").removeClass("selected");
 		//$(".onpage").hide();
 		//$("#toresult").hide();
 		tau ();
@@ -346,6 +333,12 @@
 		
 $(document).ready(function()
 {
+	$(".menu").click(function(){
+		$(".menu").removeClass("selected");
+		$(this).addClass("selected");
+		}
+	);
+	
 	$(".onpage").hide();
 	click_about_show ();
 	set_intervals ();
