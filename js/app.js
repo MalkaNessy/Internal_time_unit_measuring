@@ -106,6 +106,7 @@
 	{
 		//console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
 		//try_count = try_howmuch;
+		
 		console.log("click_test start: " );
 		hide_unselected ();		
 		attention_show ();
