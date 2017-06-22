@@ -278,8 +278,6 @@
 	{
 		hide_unselected ();
 		$(".menu").removeClass("selected");
-		//$(".onpage").hide();
-		//$("#toresult").hide();
 		tau ();
 		bbc ();
 		bbc_4 ();
@@ -293,8 +291,8 @@
 	{
 		console.log ("set_time start");
 		console.log ("data[id].start: " + data[id].start);
-		document.getElementById("start"+id).value = data[id].start;
-		document.getElementById("end"+id).value = data[id].end;
+		//document.getElementById("start"+id).value = data[id].start;
+		//document.getElementById("end"+id).value = data[id].end;
 		document.getElementById("temp_result"+id).value = data[id].temp_result;
 		document.getElementById("result"+id).value = data[id].result;
 	}
@@ -304,7 +302,7 @@
 	/* var n = 3.456;
 	alert( Math.round(n * 100) / 100 ); // 3.456 -> 345.6 -> 346 -> 3.46 */
 
-//диснейленд, проводят карточки на проходной, проверить не остался ли кто без списка! а если остался, кто именно
+
 	/* function isNormalInteger(str) 
 	{
 		var n = Math.floor(Number(str));
