@@ -101,6 +101,9 @@
 	}
 	
 	
+	///////////// Воспроизведение промежутка //////////////
+	
+	
 	//запускает всю процедуру отмеривания после нажатия на пункт меню "Начать тест"
 	function click_test()
 	{
@@ -122,40 +125,13 @@
 		hide_unselected ();		
 		attention_show ();
 	} 
-	 
+	  
 	
-	
-
-		
-	 
-	 
-	 
-	///////////// Воспроизведение промежутка //////////////
-	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   /* 2: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   3: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   4: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   5: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   6: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   7: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   8: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   9: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   10: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   11: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   12: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   13: {"interval": 5000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   14: {"interval": 4000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   15: {"interval": 3000, "start": 0, "end": 0, "temp_result": 0, "result": 0},
-			   16: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0}
- */
+	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},			   
 	};
 	////////////////* Object.keys(data).length */
 	var intervals = {1:2000, 2:3000, 3:4000, 4:5000, 5:2000, 6:4000, 7:3000, 8:5000, 9:3000,
 	10:4000, 11:2000, 12:5000, 13:5000, 14:4000, 15:3000, 16:2000};	
-	
-	
-	
-	
 	
 	var pressed = false;
 	
@@ -164,6 +140,7 @@
 	var temp_result;
 	var result;
 	var count=1;
+	
 	
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
 	function start_click () 
@@ -239,8 +216,12 @@
 	
 	function to_result_show()
 	{
-		
-		$("#toresult").show();
+		if (try_count<=2){
+			$("#ok").show();
+			$("#totest").show();
+		}
+		else {
+		$("#toresult").show();}
 		//all_results ();
 	}
 	

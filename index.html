@@ -23,8 +23,8 @@
 		<ul>
 			<li class="menu" id="about" onclick = "click_about_show ()">О методе</li>
 			<li class="menu" id="todo" onclick = "click_todo_show ()">Прочесть инструкцию</li>
-			<li class="menu" id="simulation" onclick="click_simulation(2)">Тренировка</li>
-			<li class="menu" id="test" onclick = "click_simulation(1)">Начать тест</li>
+			<li class="menu" id="simulation" onclick="click_simulation(1)">Тренировка</li>
+			<li class="menu" id="test" onclick = "click_simulation(3)">Начать тест</li>
 			<li class="menu" id="tau" onclick="results_show ()">Результаты</li>
 			
 		</ul>
@@ -182,13 +182,15 @@
 			Готово. Можно посмотреть результаты
 		</div>
 		
-		<div class= "button onpage" id="start" onclick="start_click()">
-			Start
+		<div class= "button onpage" id="ok" onclick="">
+			Отлично! Можете переходить к прохождению теста.
+			
 		</div>
-		<div class= "button onpage" id="end" onclick="end_click()">
-			End
+		<div class= "button onpage" id="totest" onclick="click_simulation(3)">
+				Пройти тест сейчас
 		</div>
 		
+				
 </div>		
 	
 </div>  
