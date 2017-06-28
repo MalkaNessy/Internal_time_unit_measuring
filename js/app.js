@@ -240,7 +240,7 @@
 		}
 		else {
 		$("#toresult").show();}
-		//all_results ();
+		
 	}
 	
 	
@@ -272,6 +272,7 @@ var thisIsSimulation = false;
 		console.log("tau start ");
 		var taucount = 0;
 		var sum = 0;
+		var error = 0;
 		
 		for (var i = 0; i < Object.keys(data).length; i++) {
 			temptau = data[i+1].result;
@@ -283,15 +284,27 @@ var thisIsSimulation = false;
 				taucount++;
 				console.log("taucount: " + taucount);
 			}
-			
+			else {
+				error++;
+				console.log("errors: " + error);
+			}
 		}
-		average = sum/taucount;
-		average = Math.round(average * 1000) / 1000 ;
-		document.getElementById("tau_result").value = average;
 		
-		
-		console.log("average: " + average);
-		
+		if (error<2){
+			average = sum/taucount;
+			average = Math.round(average * 1000) / 1000 ;
+			document.getElementById("tau_result").value = average;
+			console.log("average: " + average);
+			
+			bbc ();
+			bbc_4 ();
+			results_show();
+		}
+		else {
+			$(".onpage").hide();
+			document.getElementById("error").innerHTML = "Слишком много ошибок. Повторите тест, когда будете спокойны и в хорошем самочувствии. "
+			$("#error").show();
+		}
 	}
 	
 	function bbc ()
@@ -312,14 +325,15 @@ var thisIsSimulation = false;
 		document.getElementById("c4_result").value = c4;
 	}
 	
+	//считает все результаты, вызывается кнопкой "посчитать результат"
 	function all_results ()
 	{
 		hide_unselected ();
 		$(".menu").removeClass("selected");
 		tau ();
-		bbc ();
+		/* bbc ();
 		bbc_4 ();
-		results_show();
+		results_show(); */
 	}
 
 
