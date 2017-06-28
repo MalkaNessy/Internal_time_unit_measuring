@@ -48,12 +48,13 @@
 		x.play();
 	}
 	
-	///////// демонстрация промежутка /////////
+	/////****** демонстрация промежутка ******//////
 	
 	//показывает кнопку "внимание" в заданном промежутке
 	function attention_show () 
 	{
 		console.log("attention_show()start" );
+		hide_unselected ();
 		setTimeout(button_show, 1000);
 		//timedText(1000);
 		setTimeout(attention_hide, 2000);
@@ -79,8 +80,6 @@
 		console.log("attention_hide()start" );
 		$( "#button" ).hide();
 		setTimeout(button_hide, 1000);
-		
-		
 	}
 	
 	// подает звуковые сигналы в заданном промежутке 
@@ -101,31 +100,10 @@
 	}
 	
 	
+	
 	///////////// Воспроизведение промежутка //////////////
 	
-	
-	//запускает всю процедуру отмеривания после нажатия на пункт меню "Начать тест"
-	function click_test()
-	{
-		//console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
-		//try_count = try_howmuch;
-		
-		console.log("click_test start: " );
-		hide_unselected ();		
-		attention_show ();
-	} 
-	
-	var try_count =0;
-	//запускает процедуру тренировки
-	function click_simulation(try_howmuch)
-	{
-		try_count = try_howmuch;
-		console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
-		console.log("click_simulation start: " );
-		hide_unselected ();		
-		attention_show ();
-	} 
-	  
+
 	
 	var data ={1: {"interval": 2000, "start": 0, "end": 0, "temp_result": 0, "result": 0},			   
 	};
@@ -141,6 +119,17 @@
 	var result;
 	var count=1;
 	
+	var try_count = 0;
+	
+	//запускает всю процедуру тестирования после нажатия на пункт меню "Начать тест"
+	function click_test(try_howmuch)
+	{
+		try_count = try_howmuch;
+		console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
+		console.log("click_test start: " );
+		hide_unselected ();		
+		attention_show ();
+	} 
 	
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
 	function start_click () 
@@ -188,7 +177,24 @@
 			pressed = false;
 			console.log("pressed = " + pressed);
 			
-			if (count<=try_count){
+			if (thisIsSimulation){
+				if (result < 0.55){
+					$(".onpage").hide();
+					document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
+					$("#error").show();
+				}
+				else if (result > 1.25){
+					$(".onpage").hide();
+					document.getElementById("error").innerHTML = "Вы слишком долго ждали, чтобы нажать на кнопку. Будьте внимательнее. <h4>продолжить тренировку </h4>"
+					$("#error").show();
+				}
+				else end_click_continues ();
+			}
+			else {
+				end_click_continues ();
+			}
+			
+			/* if (count<=try_count){
 				click_test();
 				
 				count++;
@@ -199,9 +205,33 @@
 				console.log("to results, count= " + count);
 				$(".onpage").hide();
 				to_result_show();
-			}
+			} */
 		}
 	}
+	
+	function end_click_continues (){
+		console.log ("end_click_continues start, try_count = " + try_count + "count = " + count);
+		if (count<try_count){
+			if (thisIsSimulation) {
+				click_simulation(3);
+			}
+			else {
+				click_test(3);
+			}
+			count++;
+				
+		}
+		else 
+		{
+			console.log("to results, count= " + count);
+			$(".onpage").hide();
+			to_result_show();
+			thisIsSimulation = false;
+		}
+		
+	} 
+	
+	
 	
 	function add_row_to_data (count)
 	{
@@ -225,7 +255,22 @@
 		//all_results ();
 	}
 	
-		
+	
+/////////// симуляция ///////////
+var thisIsSimulation = false;
+
+	function click_simulation(try_howmuch)
+	{
+		try_count = try_howmuch;
+		thisIsSimulation = true;
+		console.log("click_simulation start: " );
+		hide_unselected ();		
+		attention_show ();
+	} 
+
+
+
+	
 	
 	////////////// подсчет результатов //////////////////
 	
