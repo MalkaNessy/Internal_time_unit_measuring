@@ -194,18 +194,6 @@
 				end_click_continues ();
 			}
 			
-			/* if (count<=try_count){
-				click_test();
-				
-				count++;
-				
-			}
-			else 
-			{
-				console.log("to results, count= " + count);
-				$(".onpage").hide();
-				to_result_show();
-			} */
 		}
 	}
 	
@@ -213,10 +201,10 @@
 		console.log ("end_click_continues start, try_count = " + try_count + "count = " + count);
 		if (count<try_count){
 			if (thisIsSimulation) {
-				click_simulation(3);
+				click_simulation(try_count);
 			}
 			else {
-				click_test(3);
+				click_test(try_count);
 			}
 			count++;
 				
@@ -286,11 +274,16 @@ var thisIsSimulation = false;
 		var sum = 0;
 		
 		for (var i = 0; i < Object.keys(data).length; i++) {
+			temptau = data[i+1].result;
+			console.log ("temptau: " + temptau);
+			if (0.55 < temptau && temptau < 1.25){
 			
-			sum += data[i+1].result;
-			console.log("sum: " + sum);
-			taucount++;
-			console.log("taucount: " + taucount);
+				sum += data[i+1].result;
+				console.log("sum: " + sum);
+				taucount++;
+				console.log("taucount: " + taucount);
+			}
+			
 		}
 		average = sum/taucount;
 		average = Math.round(average * 1000) / 1000 ;
