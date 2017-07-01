@@ -193,19 +193,6 @@
 			else {
 				end_click_continues ();
 			}
-			
-			/* if (count<=try_count){
-				click_test();
-				
-				count++;
-				
-			}
-			else 
-			{
-				console.log("to results, count= " + count);
-				$(".onpage").hide();
-				to_result_show();
-			} */
 		}
 	}
 	
@@ -226,7 +213,6 @@
 			console.log("to results, count= " + count);
 			$(".onpage").hide();
 			to_result_show();
-			thisIsSimulation = false;
 		}
 		
 	} 
@@ -246,9 +232,10 @@
 	
 	function to_result_show()
 	{
-		if (try_count<=2){
+		if (thisIsSimulation){
 			$("#ok").show();
 			$("#totest").show();
+			thisIsSimulation = false;
 		}
 		else {
 		$("#toresult").show();}
