@@ -150,7 +150,8 @@
 		}
 	}
 	
-	
+	var error = 0;
+	var max_errors = 2;
 	//фиксирует время в момент конца воспроизводимого промежутка, второй клик
 	function end_click () 
 	{
@@ -170,6 +171,12 @@
 			result = temp_result/intervals[count];
 			result = Math.round(result * 1000) / 1000 ;
 			console.log("result: " + result);
+			
+			if (result<0.55 || result>1.25){
+				error++;
+				console.log("error = " + error);
+			}
+			
 			//document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
 			add_row_to_data (count);
 			set_time (count);
