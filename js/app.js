@@ -172,19 +172,21 @@
 			result = Math.round(result * 1000) / 1000 ;
 			console.log("result: " + result);
 			
-			if (result<0.55 || result>1.25){
+			if (!(result<0.55 || result>1.25)){
+				//document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
+				add_row_to_data (count);
+				set_time (count);
+				
+				pressed = false;
+				console.log("pressed = " + pressed);
+			}/////////
+			else {
 				error++;
 				console.log("error = " + error);
-			}
-			
-			//document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
-			add_row_to_data (count);
-			set_time (count);
-			
-			pressed = false;
-			console.log("pressed = " + pressed);
-			
+			}	
 			if (thisIsSimulation){
+				pressed = false;
+				console.log ("thisIsSimulation pressed = " + pressed)
 				if (result < 0.55){
 					$(".onpage").hide();
 					document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
@@ -198,9 +200,25 @@
 				else end_click_continues ();
 			}
 			else {
-				end_click_continues ();
+				console.log("not simulation, error = " + error);
+				pressed = false;
+				if (error<max_errors){
+					console.log("error<max_errors");
+					end_click_continues ();
+				}
+				else {
+					console.log("error>=max_errors");
+					
+					$(".onpage").hide();
+					document.getElementById("error").innerHTML = "Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз"
+					$("#error").show();
+				}
 			}
+			
+			
 		}
+		
+		
 	}
 	
 	function end_click_continues (){
@@ -241,7 +259,7 @@
 	{
 		if (thisIsSimulation){
 			$("#ok").show();
-			$("#totest").show();
+			//$("#totest").show();
 			thisIsSimulation = false;
 		}
 		else {
