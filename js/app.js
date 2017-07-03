@@ -250,7 +250,7 @@
 	
 	
 	
-	//добавляет строку в список промежуточных результатов
+	//добавляет строку в массив промежуточных результатов
 	function add_row_to_data (count)
 	{
 		console.log("add_row_to_data start");
@@ -261,7 +261,7 @@
 	}
 	
 	
-	//показывает кнопки после окончания симуляции и тренировки, и отключает симуляцию
+	//показывает кнопки после окончания симуляции и тренировки, отключает симуляцию
 	function to_result_show()
 	{
 		if (thisIsSimulation){
@@ -384,6 +384,7 @@ var thisIsSimulation = false;
 		
 $(document).ready(function()
 {
+	//class selected при нажатии на любой пункт меню
 	$(".menu").click(function(){
 		$(".menu").removeClass("selected");
 		$(this).addClass("selected");
