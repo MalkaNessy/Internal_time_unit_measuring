@@ -4,6 +4,7 @@
 	function hide_unselected () 
 	{
 		$(".onpage").hide();
+		
 	}
 	
 		
@@ -126,8 +127,8 @@
 	{
 		try_count = try_howmuch;
 		console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
-		console.log("click_test start: " );
-		hide_unselected ();		
+		
+		hide_unselected ();	
 		attention_show ();
 	} 
 	
@@ -208,7 +209,8 @@
 				}
 				else {
 					console.log("error>=max_errors");
-					
+					count = 1;
+					error = 0;
 					$(".onpage").hide();
 					document.getElementById("error").innerHTML = "Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз"
 					$("#error").show();
@@ -221,6 +223,7 @@
 		
 	}
 	
+	//продолжает процедуру тренировки или тестирования
 	function end_click_continues (){
 		console.log ("end_click_continues start, try_count = " + try_count + "count = " + count);
 		if (count<try_count){
@@ -235,6 +238,8 @@
 		}
 		else 
 		{
+			count = 1;
+			error = 0;
 			console.log("to results, count= " + count);
 			$(".onpage").hide();
 			to_result_show();
@@ -244,6 +249,8 @@
 	
 	
 	
+	
+	//добавляет строку в список промежуточных результатов
 	function add_row_to_data (count)
 	{
 		console.log("add_row_to_data start");
@@ -254,7 +261,7 @@
 	}
 	
 	
-	
+	//показывает кнопки после окончания симуляции и тренировки, и отключает симуляцию
 	function to_result_show()
 	{
 		if (thisIsSimulation){
@@ -268,9 +275,12 @@
 	}
 	
 	
+	
+	
 /////////// симуляция ///////////
 var thisIsSimulation = false;
 
+	//вызывается при нажатии пункта меню "тренировка"
 	function click_simulation(try_howmuch)
 	{
 		try_count = try_howmuch;
@@ -290,6 +300,7 @@ var thisIsSimulation = false;
 	var average;
 	var c;
 	var c4;
+	
 	//считает тау - среднее арифметическое промежуточных результатов
 	function tau ()
 	{
@@ -313,6 +324,7 @@ var thisIsSimulation = false;
 		
 	}
 	
+	//считает Большой Биологический Цикл
 	function bbc ()
 	{
 		console.log("bbc start, average = " + average );
@@ -322,6 +334,7 @@ var thisIsSimulation = false;
 		document.getElementById("c_result").value = c;		
 	}
 	
+	//считает четверть Большого Биологического Цикла
 	function bbc_4 ()
 	{
 		console.log("bbc_4 start" );
@@ -331,6 +344,7 @@ var thisIsSimulation = false;
 		document.getElementById("c4_result").value = c4;
 	}
 	
+	//считает и показывает все результаты
 	function all_results ()
 	{
 		hide_unselected ();
@@ -373,6 +387,14 @@ $(document).ready(function()
 	$(".menu").click(function(){
 		$(".menu").removeClass("selected");
 		$(this).addClass("selected");
+		}
+	);
+	
+	//что делает кнопка "можете проходить настоящий тест" (после тренировки)
+	$("#ok").click(function(){
+			$(".menu").removeClass("selected");
+			$("#test").addClass("selected");
+			click_test(4);
 		}
 	);
 	
