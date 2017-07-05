@@ -113,9 +113,10 @@ ul#ulwhat {
 .explain {
 	text-align: left;
 	margin: auto;
-	border: 1px solid red;
+	display: none;
 	width: 80%;
 }
+
 
  /****** кнопки ******/
 
@@ -180,6 +181,7 @@ ul#ulwhat {
 #toresult {
 	/*кнопка "посмотреть результаты" */
 	width: 350px;
+	padding: 15px;
 }
 
 #no {
@@ -241,6 +243,9 @@ input {
 	width: 50px;
 }
 
+#temperament {
+	width: 150px;
+}
 /******* шрифты **********/
 
 /*

@@ -324,6 +324,21 @@ var thisIsSimulation = false;
 		document.getElementById("tau_result").value = average;
 		console.log("average: " + average);
 		
+		if (average <0.8){
+			document.getElementById("temperament").value = "холерик";
+		}
+		else if(average <0.9){
+			//average >= 0.8
+			document.getElementById("temperament").value = "сангвиник";
+		}
+		else if (average <1){
+			//average >= 0.9
+			document.getElementById("temperament").value = "равновесный";
+		}
+		else {
+			//average >= 1
+			document.getElementById("temperament").value = "флегматик";
+		}
 	}
 	
 	//считает Большой Биологический Цикл
