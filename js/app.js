@@ -219,10 +219,6 @@
 				}
 			}
 			
-			
-		}
-		
-		
 	}
 	
 	//продолжает процедуру тренировки или тестирования
@@ -273,7 +269,7 @@
 		}
 		else {
 		$("#toresult").show();}
-		//all_results ();
+		
 	}
 	
 	
@@ -311,6 +307,7 @@ var thisIsSimulation = false;
 		console.log("tau start ");
 		var taucount = 0;
 		var sum = 0;
+		var error = 0;
 		
 		for (var i = 0; i < Object.keys(data).length; i++) {
 			
