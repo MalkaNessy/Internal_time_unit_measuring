@@ -30,7 +30,9 @@
 	{
 		hide_unselected ();
 		$("#tau").addClass("selected");
-		$("#page #p_tau").toggle();
+		$("#page #table").hide();
+		$("#page #p_tau").show();
+		
 	}
 	
 	//выводит заданные интервалы в таблицу результатов
@@ -320,8 +322,6 @@ var thisIsSimulation = false;
 		average = sum/taucount;
 		average = Math.round(average * 1000) / 1000 ;
 		document.getElementById("tau_result").value = average;
-		
-		
 		console.log("average: " + average);
 		
 	}

@@ -96,58 +96,72 @@
 		<!-- <input type="submit" id="setBet" onclick="set_time (1)" value="to Bet"> -->
 			
 		<div class="onpage" id="p_tau" >
-			<input class="temp" id="1" value="2000">
-			<input  id="temp_result1" value="" >
-			<input  id="result1" value="" ><br>
-			<input class="temp" id="2" value="">
-			<input type="text" id="temp_result2" value="">
-			<input type="text" id="result2" value=""><br>
-			<input class="temp" id="3" value="">
-			<input type="text" id="temp_result3" value="">
-			<input type="text" id="result3" value=""><br>
-			<input class="temp" id="4" value="">
-			<input type="text" id="temp_result4" value="">
-			<input type="text" id="result4" value=""><br>
-			<input class="temp" id="5" value="">
-			<input type="text" id="temp_result5" value="">
-			<input type="text" id="result5" value=""><br>
-			<input class="temp" id="6" value="">
-			<input type="text" id="temp_result6" value="">
-			<input type="text" id="result6" value=""><br>
-			<input class="temp" id="7" value="">
-			<input type="text" id="temp_result7" value="">
-			<input type="text" id="result7" value=""><br>
-			<input class="temp" id="8" value="">
-			<input type="text" id="temp_result8" value="">
-			<input type="text" id="result8" value=""><br>
-			<input class="temp" id="9" value="">
-			<input type="text" id="temp_result9" value="">
-			<input type="text" id="result9" value=""><br>
-			<input class="temp" id="10" value="">
-			<input type="text" id="temp_result10" value="">
-			<input type="text" id="result10" value=""><br>
-			<input class="temp" id="11" value="">
-			<input type="text" id="temp_result11" value="">
-			<input type="text" id="result11" value=""><br>
-			<input class="temp" id="12" value="">
-			<input type="text" id="temp_result12" value="">
-			<input type="text" id="result12" value=""><br>
-			<input class="temp" id="13" value="">
-			<input type="text" id="temp_result13" value="">
-			<input type="text" id="result13" value=""><br>
-			<input class="temp" id="14" value="">
-			<input type="text" id="temp_result14" value="">
-			<input type="text" id="result14" value=""><br>
-			<input class="temp" id="15" value="">
-			<input type="text" id="temp_result15" value="">
-			<input type="text" id="result15" value=""><br>
-			<input class="temp" id="16" value="">
-			<input type="text" id="temp_result16" value="">
-			<input type="text" id="result16" value=""><br>
+			<div id="table">
+				<input class="temp" id="1" value="2000">
+				<input  id="temp_result1" value="" >
+				<input  id="result1" value="" ><br>
+				<input class="temp" id="2" value="">
+				<input type="text" id="temp_result2" value="">
+				<input type="text" id="result2" value=""><br>
+				<input class="temp" id="3" value="">
+				<input type="text" id="temp_result3" value="">
+				<input type="text" id="result3" value=""><br>
+				<input class="temp" id="4" value="">
+				<input type="text" id="temp_result4" value="">
+				<input type="text" id="result4" value=""><br>
+				<input class="temp" id="5" value="">
+				<input type="text" id="temp_result5" value="">
+				<input type="text" id="result5" value=""><br>
+				<input class="temp" id="6" value="">
+				<input type="text" id="temp_result6" value="">
+				<input type="text" id="result6" value=""><br>
+				<input class="temp" id="7" value="">
+				<input type="text" id="temp_result7" value="">
+				<input type="text" id="result7" value=""><br>
+				<input class="temp" id="8" value="">
+				<input type="text" id="temp_result8" value="">
+				<input type="text" id="result8" value=""><br>
+				<input class="temp" id="9" value="">
+				<input type="text" id="temp_result9" value="">
+				<input type="text" id="result9" value=""><br>
+				<input class="temp" id="10" value="">
+				<input type="text" id="temp_result10" value="">
+				<input type="text" id="result10" value=""><br>
+				<input class="temp" id="11" value="">
+				<input type="text" id="temp_result11" value="">
+				<input type="text" id="result11" value=""><br>
+				<input class="temp" id="12" value="">
+				<input type="text" id="temp_result12" value="">
+				<input type="text" id="result12" value=""><br>
+				<input class="temp" id="13" value="">
+				<input type="text" id="temp_result13" value="">
+				<input type="text" id="result13" value=""><br>
+				<input class="temp" id="14" value="">
+				<input type="text" id="temp_result14" value="">
+				<input type="text" id="result14" value=""><br>
+				<input class="temp" id="15" value="">
+				<input type="text" id="temp_result15" value="">
+				<input type="text" id="result15" value=""><br>
+				<input class="temp" id="16" value="">
+				<input type="text" id="temp_result16" value="">
+				<input type="text" id="result16" value=""><br>
+			</div>
 			<br>
-			Tau = <input type="text" class="temp" id="tau_result" value="">
-			C = <input type="text" class="temp" id="c_result" value="">
-			1/4 C = <input type="text" class="temp" id="c4_result" value="">
+			<h3>Результат:</h3>
+			"Тау" = <input type="text" class="temp" id="tau_result" value="">
+			ББЦ = <input type="text" class="temp" id="c_result" value="">
+			1/4 ББЦ = <input type="text" class="temp" id="c4_result" value=""><br>
+			Ваш тип темперамента: <input type="text" class="temp" id="temperament" value=""><br>
+			<h4>Что это значит?</h4>
+			<div class="explain">
+				<p>Нажми на пункт меню "тренировка". На экране появится на секунду кнопка "внимание", а за ней два звуковых сигнала с небольшим интервалом. Запомни, сколько времени прошло между звуковыми сигналами.</p> 
+				<p>Потом появится кнопка "воспроизведите промежуток". Нужно нажать на эту кнопку дважды, первый обозначит начало промежутка, а второй - когда по твоему мнению прошло такое же время, какое было между звуковыми сигналами. </p> 
+				<p>Нажми на пункт меню "тренировка". На экране появится на секунду кнопка "внимание", а за ней два звуковых сигнала с небольшим интервалом. Запомни, сколько времени прошло между звуковыми сигналами.</p> 
+				<p>Потом появится кнопка "воспроизведите промежуток". Нужно нажать на эту кнопку дважды, первый обозначит начало промежутка, а второй - когда по твоему мнению прошло такое же время, какое было между звуковыми сигналами. </p> 
+				<p>Нажми на пункт меню "тренировка". На экране появится на секунду кнопка "внимание", а за ней два звуковых сигнала с небольшим интервалом. Запомни, сколько времени прошло между звуковыми сигналами.</p> 
+				<p>Потом появится кнопка "воспроизведите промежуток". Нужно нажать на эту кнопку дважды, первый обозначит начало промежутка, а второй - когда по твоему мнению прошло такое же время, какое было между звуковыми сигналами. </p> 
+			
+			</div>
 		</div>
 		
 		

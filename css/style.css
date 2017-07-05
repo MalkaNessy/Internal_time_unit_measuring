@@ -14,13 +14,16 @@ body {
 header {
     height: 70px;
     text-align: center;
+	
 }
 
 ul {
 	text-align: center;
 	padding: 10px 0;
     margin-top: 30px;
+	
 	background-color: #FFBC31;
+	padding: 15px 0;
 }
 
 ul li {
@@ -38,7 +41,7 @@ ul li {
 	border-right: 3px solid #3F88C5;
 	border-bottom: 9px solid #266EA9;
 	
-	box-shadow:6px 8px #999;
+	box-shadow:9px 6px #999;
 }
 
 .selected {
@@ -52,9 +55,14 @@ ul li {
 ul#ulwhat li {
 	text-align: left;
 	width: 94%;
+	box-shadow: none;
 }
 
-
+ul#ulwhat {
+	background-color: #fff;
+	
+	
+}
  /****** текст на странице ******/
  
  
@@ -102,7 +110,12 @@ ul#ulwhat li {
 	margin: auto;
 } 
 
-
+.explain {
+	text-align: left;
+	margin: auto;
+	border: 1px solid red;
+	width: 80%;
+}
 
  /****** кнопки ******/
 
@@ -164,7 +177,13 @@ ul#ulwhat li {
 	
 }
 
+#toresult {
+	/*кнопка "посмотреть результаты" */
+	width: 350px;
+}
+
 #no {
+	/*сообщение о том, что тест не засчитан*/
 	width: 450px;
 }
  
@@ -186,6 +205,7 @@ h3{
 	text-align: center;
 	margin: auto;
 	margin-bottom: 20px;
+	margin-top: 30px;
 	font-size: 24px;
 	/* font-family: Dauphinn; */
 	font-family: "Open Sans", Verdana;
