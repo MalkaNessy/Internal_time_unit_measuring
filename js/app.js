@@ -212,8 +212,8 @@
 					count = 1;
 					error = 0;
 					$(".onpage").hide();
-					document.getElementById("error").innerHTML = "Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз"
-					$("#error").show();
+					document.getElementById("no").innerHTML = 'Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз <h4 onclick="click_simulation(3)">потренироваться</h4> <h4 onclick = "click_test(4)">пройти тест</h4>'
+					$("#no").show();
 				}
 			}
 			
@@ -231,7 +231,7 @@
 				click_simulation(3);
 			}
 			else {
-				click_test(3);
+				click_test(4);
 			}
 			count++;
 				
@@ -286,6 +286,8 @@ var thisIsSimulation = false;
 		try_count = try_howmuch;
 		thisIsSimulation = true;
 		console.log("click_simulation start: " );
+		$(".menu").removeClass("selected");
+		$("#simulation").addClass("selected");
 		hide_unselected ();		
 		attention_show ();
 	} 
