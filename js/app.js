@@ -65,21 +65,21 @@
 	function button_show()
 	{
 		console.log("button_show start" );
-		$( "#button" ).show();
+		$( "#attention" ).show();
 	}
 	
 	//прячет кнопку "внимание" и запускает звуковой стимул
 	function button_hide()
 	{
 		console.log("button_hide start" );
-		$( "#button" ).hide();
+		$( "#attention" ).hide();
 		set_stimul (count);
 	}	
 	
 	//убирает с экрана кнопку "внимание" и запускает звуковой стимул через промежуток	
 	function attention_hide() {
 		console.log("attention_hide()start" );
-		$( "#button" ).hide();
+		$( "#attention" ).hide();
 		setTimeout(button_hide, 1000);
 	}
 	

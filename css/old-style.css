@@ -1,5 +1,5 @@
 body {
-	/* background-color: #f6f0dc; */
+	background-color: #f6f0dc;
 	
 }
 
@@ -16,12 +16,11 @@ header {
 
 ul {
 	text-align: center;
-	padding: 10px 0;
+	padding: 0;
     margin-top: 30px;
-	background-color: #FFBC31;
 }
 
-/*old ul li {
+ul li {
 	display: inline-block;
 	font-size: 18px;
 	background-color: #d6b756;
@@ -29,28 +28,6 @@ ul {
 	margin: 0 5px;
 	border: 1px solid brown;
 	border-radius: 5px;
-}
- */
-ul li {
-	display: inline-block;
-	margin: 0 16px;
-	padding: 0 5px;
-	/* width: 60px;
-	height: 30px; */
-	color: #fff;
-	background: #5E9913;
-	text-align: center;
-	line-height: 30px;
-	vertical-align: middle;
-	border-top: 3px solid #5E9913;
-	border-left: 9px solid #76B12A;
-	border-right: 3px solid #5E9913;
-	border-bottom: 9px solid #477E01;
-}
-ul#ulwhat li {
-	text-align: left;
-	width: 94%;
-	
 }
 
 /*generator https://maxzon.ru/button_gen/index.html*/
@@ -79,39 +56,31 @@ ul#ulwhat li {
 
 #page {
 	text-align: center;
-	
 }
 
 .text {
 	font-size: 18px;
 	padding: 10px;
-	/* width: 90%; */
+	width: 90%;
 	margin: auto;
-	text-align: center;
+	/* background-color: white; */
 	/* border: 1px solid brown; */
 	border-radius: 5px;
 }
-.cols {
-	margin: auto;
-}
 
 .selected {
-	background-color: #3F88C5;
-	border-top: 3px solid #3F88C5;
-	border-left: 9px solid #4C96D3;
-	border-right: 3px solid #3F88C5;
-	border-bottom: 9px solid #266EA9;
+	background-color: #e4d092;
 }
 
 
 .button {
 	width: 150px;
 	font-size: 24px;
-	background-color: #FFDD98;
+	background-color: LightGray;
 	padding: 20px ;
 	margin: auto;
 	margin-top: 30px;
-	/* border: 3px solid Green; */
+	border: 3px solid Green;
 	border-radius: 5px;
 	text-align: center;
 }
@@ -123,7 +92,7 @@ ul#ulwhat li {
 }
 
 #p_todo, #p_about, #p_about ul {
-	text-align: justify;
+	text-align: left;
 }
 
 input {
@@ -161,47 +130,4 @@ h4 {
 	background-color: #d6b756;
 	padding: 5px;
 	border-radius: 15px;
-	
-}
-
-h3{
-	font-family: Gloria Hallelujah, Verdana, sans-serif;
-	width: 50%;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 20px;
-}
-
-h5{
-	font-family: Gloria Hallelujah, Verdana, sans-serif;
-	width: 50%;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 20px;
-}
-
-#underline{
-	width: 300px;
-	border-bottom: 2px solid #5E9913;
-	margin: auto;
-} 
-
-.col_left{
-	float: left;
-	width: 47%;
-	padding-left: 15px;
-}
-
-.col_right{
-	float: left;
-	width: 47%;
-	padding-left: 30px;
-}
-
-footer {
-  font-size: 0.75em;
-  text-align: center;
-  clear: both;
-  padding-top: 50px;
-  color: #555;
 }
