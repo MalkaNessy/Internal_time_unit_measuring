@@ -30,7 +30,7 @@
 	{
 		hide_unselected ();
 		$("#tau").addClass("selected");
-		$("#page #table").hide();
+		/* $("#page #table").hide(); */
 		$("#page #p_tau").show();
 		
 	}
@@ -181,11 +181,11 @@
 				set_time (count);
 				
 				pressed = false;
-				console.log("pressed = " + pressed);
+				console.log("result normal: " + result + "pressed = " + pressed);
 			}/////////
 			else {
 				error++;
-				console.log("error = " + error);
+				console.log("result normal: " + result + "error = " + error);
 			}	
 			if (thisIsSimulation){
 				pressed = false;
@@ -218,7 +218,7 @@
 					$("#no").show();
 				}
 			}
-			
+		}	
 	}
 	
 	//продолжает процедуру тренировки или тестирования
@@ -321,16 +321,20 @@ var thisIsSimulation = false;
 		document.getElementById("tau_result").value = average;
 		console.log("average: " + average);
 		
-		if (average <0.8){
+		if (average <=0.79){
 			document.getElementById("temperament").value = "холерик";
 		}
-		else if(average <0.9){
-			//average >= 0.8
+		else if(average <=0.87){
+			//average >= 0.87
 			document.getElementById("temperament").value = "сангвиник";
 		}
-		else if (average <1){
+		else if (average <=0.93){
 			//average >= 0.9
 			document.getElementById("temperament").value = "равновесный";
+		}
+		else if (average <=1){
+			//average >= 0.9
+			document.getElementById("temperament").value = "меланхолик";
 		}
 		else {
 			//average >= 1
