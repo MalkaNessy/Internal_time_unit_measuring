@@ -57,7 +57,7 @@
 	function attention_show () 
 	{
 		console.log("attention_show()start" );
-		hide_unselected ();
+		//hide_unselected ();
 		setTimeout(button_show, 1000);
 		//timedText(1000);
 		setTimeout(attention_hide, 2000);
@@ -120,9 +120,9 @@
 	var end;
 	var temp_result;
 	var result;
-	var count=1;
 	
-	var try_count = 0;
+	var count=1; //количество проходов теста
+	var try_count = 0; //сколько раз должен проходить тест (дефолтное: 16)
 	
 	//запускает всю процедуру тестирования после нажатия на пункт меню "Начать тест"
 	function click_test(try_howmuch)
