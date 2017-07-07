@@ -1,4 +1,4 @@
-	/////////// главное меню /////////////////////////////
+///////////////****** главное меню *****//////////////////
 	
 	//прячет все содержимое страницы, меняет css-класс кнопки на "selected" и обратно
 	function hide_unselected () 
@@ -51,7 +51,9 @@
 		x.play();
 	}
 	
-	/////****** демонстрация промежутка ******//////
+	
+////////****** Демонстрация промежутка ******//////
+	
 	
 	//показывает кнопку "внимание" в заданном промежутке
 	function attention_show () 
@@ -104,7 +106,7 @@
 	
 	
 	
-	///////////// Воспроизведение промежутка //////////////
+/////////***** Воспроизведение промежутка ******///////////
 	
 
 	
@@ -114,12 +116,17 @@
 	var intervals = {1:2000, 2:3000, 3:4000, 4:5000, 5:2000, 6:4000, 7:3000, 8:5000, 9:3000,
 	10:4000, 11:2000, 12:5000, 13:5000, 14:4000, 15:3000, 16:2000};	
 	
-	var pressed = false;
+	var pressed = false; //означает что кнопка еще не была нажата
 	
 	var start;
 	var end;
 	var temp_result;
 	var result;
+	
+	var error = 0; //количество сделанных ошибок
+	var max_errors = 2; //количество максимально допустимых ошибок
+	
+	var thisIsSimulation = false; //показывает, проходим мы сейчас симуляцию или тест
 	
 	var count=1; //количество проходов теста
 	var try_count = 0; //сколько раз должен проходить тест (дефолтное: 16)
@@ -153,8 +160,7 @@
 		}
 	}
 	
-	var error = 0;
-	var max_errors = 2;
+	
 	//фиксирует время в момент конца воспроизводимого промежутка, второй клик
 	function end_click () 
 	{
@@ -275,8 +281,8 @@
 	
 	
 	
-/////////// симуляция ///////////
-var thisIsSimulation = false;
+///////////******* Симуляция *********///////////
+	
 
 	//вызывается при нажатии пункта меню "тренировка"
 	function click_simulation(try_howmuch)
@@ -398,7 +404,24 @@ var thisIsSimulation = false;
 		return String(n) === str && n >= 0;
 	} */
 	
+	function default_test (){
+		console.log ("default_test start");
+		thisIsSimulation = false;
+		$(".onpage").hide();
+		$(".menu").removeClass("selected");
+		$("#test").addClass("selected");
+		error = 0;
+		max_errors = 2;
+		count = 1;
+	}
 	
+	function default_simulation (){
+		console.log ("default_simulation start");
+		thisIsSimulation = true;
+		$(".onpage").hide();
+		$(".menu").removeClass("selected");
+		$("#simulation").addClass("selected");
+	}
 		
 $(document).ready(function()
 {
