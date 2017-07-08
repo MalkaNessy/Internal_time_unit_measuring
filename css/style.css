@@ -162,23 +162,23 @@ ul#ulwhat {
 	border-bottom: 9px solid #477E01;
 } 
  
-#error, #ok {
-	/*кнопка ошибок при тренировке или невыполненном тесте*/
+#error, #ok , #toresult {
+	/*кнопка ошибок при тренировке или невыполненном тесте, кнопка "посмотреть результаты" */
 	width: 350px;
 	padding: 15px;
 	
-	background-color: #FFDD98;
+	/* background-color: #FFDD98;
 	border-top: 12px solid #477E01;
 	border-left: 12px solid #76B12A;
 	border-right: 9px solid #5E9913;
-	border-bottom: 12px solid #477E01;
+	border-bottom: 12px solid #477E01; */
 	
-}
-
-#toresult {
-	/*кнопка "посмотреть результаты" */
-	width: 350px;
-	padding: 15px;
+	background-color: #F5DEA0;
+	border-top: 12px solid #7F6C16;
+	border-left: 12px solid #B09D47;
+	border-right: 9px solid #97842E;
+	border-bottom: 12px solid #7F6C16;
+	
 }
 
 #no {
