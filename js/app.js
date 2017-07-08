@@ -52,12 +52,9 @@
 	}
 	
 	
+	
+	
 ////////****** Демонстрация промежутка ******//////
-	
-	
-	
-	
-	
 	
 	
 	//показывает кнопку "внимание" в заданном промежутке
@@ -74,21 +71,21 @@
 	function button_show()
 	{
 		console.log("button_show start" );
-		$( "#attention" ).show();
+		TestView.attention.show();
 	}
 	
 	//прячет кнопку "внимание" и запускает звуковой стимул
 	function button_hide()
 	{
 		console.log("button_hide start" );
-		$( "#attention" ).hide();
+		TestView.attention.hide();
 		set_stimul (count);
 	}	
 	
 	//убирает с экрана кнопку "внимание" и запускает звуковой стимул через промежуток	
 	function attention_hide() {
 		console.log("attention_hide()start" );
-		$( "#attention" ).hide();
+		TestView.attention.hide();
 		setTimeout(button_hide, 1000);
 	}
 	
@@ -106,7 +103,7 @@
 	function click_show ()
 	{
 		console.log("click_show start" );
-		$("#click").show();
+		TestView.click.show();
 	}
 	
 	
@@ -131,19 +128,41 @@
 	var error = 0; //количество сделанных ошибок
 	var max_errors = 2; //количество максимально допустимых ошибок
 	
-	var thisIsSimulation = false; //показывает, проходим мы сейчас симуляцию или тест
+
 	
 	var count=1; //количество проходов теста
-	var try_count = 0; //сколько раз должен проходить тест (дефолтное: 16)
+	//var try_count = 0; сколько раз должен проходить тест (дефолтное: 16)
+	TestView = {};
+	TestParams = {};
+	function init_jquery (){
+		TestView.onpage = $(".onpage");//все содержимое страниц
+		TestView.attention = $("#attention");//кнопка "внимание"
+		TestView.click = $("#click");//кнопка "воспроизвести промежуток"
+		TestView.error = $("#error");//сообщение об ошибках
+		TestView.menu = $(".menu");//все кнопки меню
+		TestView.menusimulation = $("#simulation");//кнопка меню "симуляция"
+	}
+	
+	
+	function start_test(){
+		click_test();
+	}
 	
 	//запускает всю процедуру тестирования после нажатия на пункт меню "Начать тест"
-	function click_test(try_howmuch)
+	function click_test()
 	{
-		try_count = try_howmuch;
-		console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
+		//try_count = try_howmuch;
+		//console.log("click_test try_howmuch: " + try_howmuch + "try_count: "+ try_count);
+		
+		
+		TestParams.thisIsSimulation = false; //показывает, проходим мы сейчас симуляцию или тест
+		TestParams.try_count = 4;
+		init_jquery ();
 		
 		hide_unselected ();	
 		attention_show ();
+		console.log("click_test TestParams.try_count: "+ TestParams.try_count);
+		
 	} 
 	
 	//фиксирует время в момент начала воспроизводимого промежутка, первый клик
@@ -152,7 +171,7 @@
 		console.log("start_click start");
 		if(!pressed)
 		{
-			$( "#click" ).addClass("clicked");
+			TestView.click.addClass("clicked");
 			var start_date = new Date(); // засекли время
 			start = start_date.valueOf();
 			pressed = true;
@@ -198,18 +217,18 @@
 				error++;
 				console.log("result normal: " + result + "error = " + error);
 			}	
-			if (thisIsSimulation){
+			if (TestParams.thisIsSimulation){
 				pressed = false;
 				console.log ("thisIsSimulation pressed = " + pressed)
 				if (result < 0.55){
-					$(".onpage").hide();
+					TestView.onpage.hide();
 					document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
-					$("#error").show();
+					TestView.error.show();
 				}
 				else if (result > 1.25){
-					$(".onpage").hide();
+					TestView.onpage.hide();
 					document.getElementById("error").innerHTML = "Вы слишком долго ждали, чтобы нажать на кнопку. Будьте внимательнее. <h4>продолжить тренировку </h4>"
-					$("#error").show();
+					TestView.error.show();
 				}
 				else end_click_continues ();
 			}
@@ -224,9 +243,9 @@
 					console.log("error>=max_errors");
 					count = 1;
 					error = 0;
-					$(".onpage").hide();
-					document.getElementById("no").innerHTML = 'Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз <h4 onclick="click_simulation(3)">потренироваться</h4> <h4 onclick = "click_test(4)">пройти тест</h4>'
-					$("#no").show();
+					TestView.onpage.hide();
+					document.getElementById("error").innerHTML = 'Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз <h4 onclick="click_simulation()">потренироваться</h4> <h4 onclick = "click_test()">пройти тест</h4>'
+					TestView.error.show();
 				}
 			}
 		}	
@@ -234,9 +253,9 @@
 	
 	//продолжает процедуру тренировки или тестирования
 	function end_click_continues (){
-		console.log ("end_click_continues start, try_count = " + try_count + "count = " + count);
-		if (count<try_count){
-			if (thisIsSimulation) {
+		console.log ("end_click_continues start, try_count = " + TestParams.try_count + "count = " + count);
+		if (count<TestParams.try_count){
+			if (TestParams.thisIsSimulation) {
 				click_simulation(3);
 			}
 			else {
@@ -250,7 +269,7 @@
 			count = 1;
 			error = 0;
 			console.log("to results, count= " + count);
-			$(".onpage").hide();
+			TestView.onpage.hide();
 			to_result_show();
 		}
 		
@@ -273,10 +292,10 @@
 	//показывает кнопки после окончания симуляции и тренировки, отключает симуляцию
 	function to_result_show()
 	{
-		if (thisIsSimulation){
+		if (TestParams.thisIsSimulation){
 			$("#ok").show();
 			//$("#totest").show();
-			thisIsSimulation = false;
+			TestParams.thisIsSimulation = false;
 		}
 		else {
 		$("#toresult").show();}
@@ -290,13 +309,15 @@
 	
 
 	//вызывается при нажатии пункта меню "тренировка"
-	function click_simulation(try_howmuch)
+	function click_simulation()
 	{
-		try_count = try_howmuch;
-		thisIsSimulation = true;
+		TestParams.try_count = 2;
+		TestParams.thisIsSimulation = true;
+		init_jquery ();
+		
 		console.log("click_simulation start: " );
-		$(".menu").removeClass("selected");
-		$("#simulation").addClass("selected");
+		TestView.menu.removeClass("selected");
+		TestView.menusimulation.addClass("selected");
 		hide_unselected ();		
 		attention_show ();
 	} 
@@ -411,7 +432,7 @@
 	
 	function default_test (){
 		console.log ("default_test start");
-		thisIsSimulation = false;
+		TestParams.thisIsSimulation = false;
 		$(".onpage").hide();
 		$(".menu").removeClass("selected");
 		$("#test").addClass("selected");
@@ -422,7 +443,7 @@
 	
 	function default_simulation (){
 		console.log ("default_simulation start");
-		thisIsSimulation = true;
+		TestParams.thisIsSimulation = true;
 		$(".onpage").hide();
 		$(".menu").removeClass("selected");
 		$("#simulation").addClass("selected");
