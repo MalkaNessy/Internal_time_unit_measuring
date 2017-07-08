@@ -162,7 +162,7 @@ ul#ulwhat {
 	border-bottom: 9px solid #477E01;
 } 
  
-#error, #ok , #toresult {
+#error, #ok, #toresult  {
 	/*кнопка ошибок при тренировке или невыполненном тесте, кнопка "посмотреть результаты" */
 	width: 350px;
 	padding: 15px;
@@ -174,12 +174,14 @@ ul#ulwhat {
 	border-bottom: 12px solid #477E01; */
 	
 	background-color: #F5DEA0;
-	border-top: 12px solid #7F6C16;
-	border-left: 12px solid #B09D47;
-	border-right: 9px solid #97842E;
+	border-top: 12px solid #78640D;
+	border-left: 12px solid #95822C;
+	border-right: 9px solid #95822C;
 	border-bottom: 12px solid #7F6C16;
 	
 }
+
+
 
 #no {
 	/*сообщение о том, что тест не засчитан*/
