@@ -43,68 +43,79 @@
 		}
 	}
 	
-	//подает звуковой сигнал
-	function playAudio() {
-		console.log("playAudio() start" );
-		var x = document.getElementById("myAudio");
-		console.log("x: " + x);		
-		x.play();
-	}
+	
 	
 	
 	
 	
 ////////****** Демонстрация промежутка ******//////
 	
+function RunTimer () {
+		
+}// runtimer end
+		
+		//подает звуковой сигнал
+		function playAudio() {
+			console.log("playAudio() start" );
+			var x = document.getElementById("myAudio");
+			console.log("x: " + x);		
+			x.play();
+		}
+		
+		//показывает кнопку "внимание" в заданном промежутке
+		function attention_show () 
+		{
+			console.log("attention_show()start" );
+			//hide_unselected ();
+			setTimeout(button_show, 1000);
+			//timedText(1000);
+			setTimeout(attention_hide, 2000);
+		}
+		
+		//показывает кнопку "внимание" 
+		function button_show()
+		{
+			console.log("button_show start" );
+			TestView.attention.show();
+		}
+		
+		
+		//убирает с экрана кнопку "внимание" через секунду	
+		function attention_hide() {
+			console.log("attention_hide()start" );
+			TestView.attention.hide();
+			setTimeout(button_hide, 1000);
+		}
+		
+		//прячет кнопку "внимание" и запускает звуковой стимул
+		function button_hide()
+		{
+			console.log("button_hide start" );
+			TestView.attention.hide();
+			set_stimul (count);
+		}	
+		
+		// подает звуковые сигналы в заданном промежутке 
+		function set_stimul (count)
+		{
+			console.log("set_stimul (count) start, count: " + count);
+			playAudio();
+			setTimeout(playAudio, intervals[count]);
+			setTimeout(click_show, (intervals[count]+1000));
+		}
+		
+		
+		//показывает кнопку "Воспроизведите промежуток", которую должен нажимать пользователь
+		function click_show ()
+		{
+			console.log("click_show start" );
+			TestView.click.show();
+		}
+		
 	
-	//показывает кнопку "внимание" в заданном промежутке
-	function attention_show () 
-	{
-		console.log("attention_show()start" );
-		//hide_unselected ();
-		setTimeout(button_show, 1000);
-		//timedText(1000);
-		setTimeout(attention_hide, 2000);
-	}
-	
-	//показывает кнопку "внимание" 
-	function button_show()
-	{
-		console.log("button_show start" );
-		TestView.attention.show();
-	}
-	
-	//прячет кнопку "внимание" и запускает звуковой стимул
-	function button_hide()
-	{
-		console.log("button_hide start" );
-		TestView.attention.hide();
-		set_stimul (count);
-	}	
-	
-	//убирает с экрана кнопку "внимание" и запускает звуковой стимул через промежуток	
-	function attention_hide() {
-		console.log("attention_hide()start" );
-		TestView.attention.hide();
-		setTimeout(button_hide, 1000);
-	}
-	
-	// подает звуковые сигналы в заданном промежутке 
-	function set_stimul (count)
-	{
-		console.log("set_stimul (count) start, count: " + count);
-		playAudio();
-		setTimeout(playAudio, intervals[count]);
-		setTimeout(click_show, (intervals[count]+1000));
-	}
 	
 	
-	//показывает кнопку "Воспроизведите промежуток", которую должен нажимать пользователь
-	function click_show ()
-	{
-		console.log("click_show start" );
-		TestView.click.show();
-	}
+	
 	
 	
 	
@@ -141,14 +152,32 @@
 		TestView.error = $("#error");//сообщение об ошибках
 		TestView.menu = $(".menu");//все кнопки меню
 		TestView.menusimulation = $("#simulation");//кнопка меню "симуляция"
+		TestView.explain = $(".explain");//место для описания типа темперамента
+	}
+	
+	TestLoad = {};
+	function init_load (){
+		TestLoad.holerik = "texts/holerik.html";
+		TestLoad.sangvinik = "texts/sangvinik.html";
+		TestLoad.ravnovesny = "texts/ravnovesny.html";
+		TestLoad.melanholik = "texts/melanholik.html";
+		TestLoad.flegmatik = "texts/flegmatik.html";
+		
+		TestLoad.p_about = "texts/p_about.html";
+		TestLoad.p_todo = "texts/p_todo.html";
+	} 
+	function explain (){
+		TestLoad.explain.load( "texts/holerik.html" );
 	}
 	
 	
+	
+	//после нажатия на пункт меню "Начать тест"...
 	function start_test(){
 		click_test();
 	}
 	
-	//запускает всю процедуру тестирования после нажатия на пункт меню "Начать тест"
+	//...запускает всю процедуру тестирования 
 	function click_test()
 	{
 		//try_count = try_howmuch;
@@ -161,6 +190,7 @@
 		
 		hide_unselected ();	
 		attention_show ();
+		
 		console.log("click_test TestParams.try_count: "+ TestParams.try_count);
 		
 	} 
@@ -307,8 +337,12 @@
 	
 ///////////******* Симуляция *********///////////
 	
+	//при нажатии пункта меню "тренировка"...
+	function start_simulation (){
+		click_simulation();
+	}
 
-	//вызывается при нажатии пункта меню "тренировка"
+	//...запускает процедуру тренировки
 	function click_simulation()
 	{
 		TestParams.try_count = 2;
@@ -398,7 +432,7 @@
 	function all_results ()
 	{
 		hide_unselected ();
-		$(".menu").removeClass("selected");
+		TestView.menu.removeClass("selected");
 		tau ();
 		bbc ();
 		bbc_4 ();
@@ -430,25 +464,13 @@
 		return String(n) === str && n >= 0;
 	} */
 	
-	function default_test (){
-		console.log ("default_test start");
-		TestParams.thisIsSimulation = false;
-		$(".onpage").hide();
-		$(".menu").removeClass("selected");
-		$("#test").addClass("selected");
-		error = 0;
-		max_errors = 2;
-		count = 1;
-	}
+	/*TestView.explain.load( "texts/holerik.html" );*/
 	
-	function default_simulation (){
-		console.log ("default_simulation start");
-		TestParams.thisIsSimulation = true;
-		$(".onpage").hide();
-		$(".menu").removeClass("selected");
-		$("#simulation").addClass("selected");
-	}
-		
+	
+	
+	
+
+	
 $(document).ready(function()
 {
 	//class selected при нажатии на любой пункт меню
