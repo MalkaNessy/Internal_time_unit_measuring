@@ -6,7 +6,9 @@
 		$(".onpage").hide();
 		
 	}
-	
+	/*		
+		TestLoad.p_about = "texts/p_about.html";
+		TestLoad.p_todo = "texts/p_todo.html";*/
 		
 	//показывает текст статьи "о методе" и меняет вид нажатой кнопки меню
 	 function click_about_show () 
@@ -30,7 +32,7 @@
 	{
 		hide_unselected ();
 		$("#tau").addClass("selected");
-		/* $("#page #table").hide(); */
+		$("#page #table").hide(); 
 		$("#page #p_tau").show();
 		
 	}
@@ -136,20 +138,17 @@ function RunTimer () {
 	var temp_result;
 	var result;
 	
-	var error = 0; //количество сделанных ошибок
+	/* var error = 0; //количество сделанных ошибок
 	var max_errors = 2; //количество максимально допустимых ошибок
-	
-
-	
-	var count=1; //количество проходов теста
-	//var try_count = 0; сколько раз должен проходить тест (дефолтное: 16)
+	var count=1; //количество проходов теста */
+	/////var try_count = 0; сколько раз должен проходить тест (дефолтное: 16)
 	TestView = {};
 	TestParams = {};
 	function init_jquery (){
 		TestView.onpage = $(".onpage");//все содержимое страниц
 		TestView.attention = $("#attention");//кнопка "внимание"
 		TestView.click = $("#click");//кнопка "воспроизвести промежуток"
-		TestView.error = $("#error");//сообщение об ошибках
+		TestView.errorMesage = $("#error");//сообщение об ошибках
 		TestView.menu = $(".menu");//все кнопки меню
 		TestView.menusimulation = $("#simulation");//кнопка меню "симуляция"
 		TestView.explain = $(".explain");//место для описания типа темперамента
@@ -165,15 +164,21 @@ function RunTimer () {
 		
 		TestLoad.p_about = "texts/p_about.html";
 		TestLoad.p_todo = "texts/p_todo.html";
-	} 
+	}
+	
 	function explain (){
-		TestLoad.explain.load( "texts/holerik.html" );
+		//TestLoad.explain.load( "texts/holerik.html" );
+		TestView.explain.toggle();
 	}
 	
 	
 	
 	//после нажатия на пункт меню "Начать тест"...
 	function start_test(){
+		TestParams.error = 0; //количество сделанных ошибок
+		TestParams.max_errors = 2; //количество максимально допустимых ошибок
+		count = 1; //количество проходов теста
+		
 		click_test();
 	}
 	
@@ -244,8 +249,8 @@ function RunTimer () {
 				console.log("result normal: " + result + "pressed = " + pressed);
 			}/////////
 			else {
-				error++;
-				console.log("result normal: " + result + "error = " + error);
+				TestParams.error++;
+				console.log("result normal: " + result + "error = " + TestParams.error);
 			}	
 			if (TestParams.thisIsSimulation){
 				pressed = false;
@@ -253,29 +258,29 @@ function RunTimer () {
 				if (result < 0.55){
 					TestView.onpage.hide();
 					document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
-					TestView.error.show();
+					TestView.errorMesage.show();
 				}
 				else if (result > 1.25){
 					TestView.onpage.hide();
 					document.getElementById("error").innerHTML = "Вы слишком долго ждали, чтобы нажать на кнопку. Будьте внимательнее. <h4>продолжить тренировку </h4>"
-					TestView.error.show();
+					TestView.errorMesage.show();
 				}
 				else end_click_continues ();
 			}
 			else {
-				console.log("not simulation, error = " + error);
+				console.log("not simulation, error = " + TestParams.error);
 				pressed = false;
-				if (error<max_errors){
+				if (TestParams.error<TestParams.max_errors){
 					console.log("error<max_errors");
 					end_click_continues ();
 				}
 				else {
 					console.log("error>=max_errors");
-					count = 1;
-					error = 0;
+					/* count = 1;
+					error = 0; */
 					TestView.onpage.hide();
-					document.getElementById("error").innerHTML = 'Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз <h4 onclick="click_simulation()">потренироваться</h4> <h4 onclick = "click_test()">пройти тест</h4>'
-					TestView.error.show();
+					document.getElementById("error").innerHTML = 'Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз <h4 onclick="start_simulation()">потренироваться</h4> <h4 onclick = "start_test()">пройти тест</h4>'
+					TestView.errorMesage.show();
 				}
 			}
 		}	
@@ -296,8 +301,8 @@ function RunTimer () {
 		}
 		else 
 		{
-			count = 1;
-			error = 0;
+			/* count = 1;
+			error = 0; */
 			console.log("to results, count= " + count);
 			TestView.onpage.hide();
 			to_result_show();
@@ -339,6 +344,7 @@ function RunTimer () {
 	
 	//при нажатии пункта меню "тренировка"...
 	function start_simulation (){
+		count = 1; //количество проходов теста
 		click_simulation();
 	}
 
@@ -387,24 +393,35 @@ function RunTimer () {
 		document.getElementById("tau_result").value = average;
 		console.log("average: " + average);
 		
+		
+		
+		
+		
+		
 		if (average <=0.79){
 			document.getElementById("temperament").value = "холерик";
+			TestView.explain.load( TestLoad.holerik);
+			
 		}
 		else if(average <=0.87){
 			//average >= 0.87
 			document.getElementById("temperament").value = "сангвиник";
+			TestView.explain.load( TestLoad.sangvinik );
 		}
 		else if (average <=0.93){
 			//average >= 0.9
 			document.getElementById("temperament").value = "равновесный";
+			TestView.explain.load(TestLoad.ravnovesny );
 		}
 		else if (average <=1){
 			//average >= 0.9
 			document.getElementById("temperament").value = "меланхолик";
+			TestView.explain.load( TestLoad.melanholik  );
 		}
 		else {
 			//average >= 1
 			document.getElementById("temperament").value = "флегматик";
+			TestView.explain.load( TestLoad.flegmatik );
 		}
 	}
 	
@@ -487,7 +504,8 @@ $(document).ready(function()
 			click_test(4);
 		}
 	);
-	
+	init_load ();
+	init_jquery ();
 	$(".onpage").hide();
 	click_about_show ();
 	set_intervals ();
