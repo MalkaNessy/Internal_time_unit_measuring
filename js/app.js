@@ -6,28 +6,33 @@
 		$(".onpage").hide();
 		
 	}
-	/*		
-		TestLoad.p_about = "texts/p_about.html";
-		TestLoad.p_todo = "texts/p_todo.html";*/
-		
+	
 	//показывает текст статьи "о методе" и меняет вид нажатой кнопки меню
 	 function click_about_show () 
 	{
 		hide_unselected(); 
-		TestLoad.p_about.load( "texts/p_about.html" );
+		TestView.p_about.load( "texts/p_about.html" );
 		$("#page #p_about").show();
 		$( "#about" ).addClass("selected");
 	} 
-	
-		
+			
 	//показывает текст статьи "инструкция" и меняет вид нажатой кнопки меню
-	 function click_todo_show () 
+	function click_todo_show () 
 	{
 		hide_unselected ();
-		TestLoad.p_todo.load( "texts/p_todo.html" );		
+		TestView.p_todo.load( "texts/p_todo.html" );		
 		$("#page #p_todo").show();
 		$( "#todo" ).addClass("selected");
 	} 
+	
+	//показывает текст статьи "ФАКУ" и меняет вид нажатой кнопки меню
+	function click_faq_show ()
+	{
+		hide_unselected ();
+		TestView.p_faq.load( "texts/p_todo.html" );
+		$("#page #p_faq").show();
+		$( "#faq" ).addClass("selected");
+	}
 	
 	//показывает таблицу результатов
 	function results_show ()
@@ -148,8 +153,9 @@ function RunTimer () {
 	TestParams = {};
 	function init_jquery (){
 		TestView.onpage = $(".onpage");//все содержимое страниц
-		TestView.p_about = $("p_about");//содержимое страницы "о методе"
-		TestView.p_todo = $("p_todo");//содержимое страницы "инструкция"
+		TestView.p_about = $("#p_about");//содержимое страницы "о методе"
+		TestView.p_todo = $("#p_todo");//содержимое страницы "инструкция"
+		TestView.p_faq = $("#p_faq");//содержимое страницы "faq"
 		TestView.attention = $("#attention");//кнопка "внимание"
 		TestView.click = $("#click");//кнопка "воспроизвести промежуток"
 		TestView.errorMesage = $("#error");//сообщение об ошибках
@@ -158,7 +164,7 @@ function RunTimer () {
 		TestView.explain = $(".explain");//место для описания типа темперамента
 	}
 	
-	TestLoad = {};
+	/* TestLoad = {};
 	function init_load (){
 		TestLoad.holerik = "texts/holerik.html";
 		TestLoad.sangvinik = "texts/sangvinik.html";
@@ -168,7 +174,7 @@ function RunTimer () {
 		
 		TestLoad.p_about = "texts/p_about.html";
 		TestLoad.p_todo = "texts/p_todo.html";
-	}
+	} */
 	
 	function explain (){
 		TestView.explain.toggle();
@@ -503,7 +509,7 @@ $(document).ready(function()
 			click_test(4);
 		}
 	);
-	init_load ();
+	/* init_load (); */
 	init_jquery ();
 	$(".onpage").hide();
 	click_about_show ();
