@@ -167,10 +167,9 @@ function RunTimer () {
 	}
 	
 	function explain (){
-		//TestLoad.explain.load( "texts/holerik.html" );
 		TestView.explain.toggle();
 	}
-	
+	//TestLoad.explain.load( "texts/holerik.html" );
 	
 	
 	//после нажатия на пункт меню "Начать тест"...
@@ -394,34 +393,30 @@ function RunTimer () {
 		console.log("average: " + average);
 		
 		
-		
-		
-		
-		
 		if (average <=0.79){
 			document.getElementById("temperament").value = "холерик";
-			TestView.explain.load( TestLoad.holerik);
+			TestView.explain.load(  "texts/holerik.html" );
 			
 		}
 		else if(average <=0.87){
 			//average >= 0.87
 			document.getElementById("temperament").value = "сангвиник";
-			TestView.explain.load( TestLoad.sangvinik );
+			TestView.explain.load( "texts/sangvinik.html"  );
 		}
 		else if (average <=0.93){
 			//average >= 0.9
 			document.getElementById("temperament").value = "равновесный";
-			TestView.explain.load(TestLoad.ravnovesny );
+			TestView.explain.load("texts/ravnovesny.html"  );
 		}
 		else if (average <=1){
 			//average >= 0.9
 			document.getElementById("temperament").value = "меланхолик";
-			TestView.explain.load( TestLoad.melanholik  );
+			TestView.explain.load( "texts/melanholik.html"   );
 		}
 		else {
 			//average >= 1
 			document.getElementById("temperament").value = "флегматик";
-			TestView.explain.load( TestLoad.flegmatik );
+			TestView.explain.load( "texts/flegmatik.html"  );
 		}
 	}
 	
