@@ -14,6 +14,7 @@
 	 function click_about_show () 
 	{
 		hide_unselected(); 
+		TestLoad.p_about.load( "texts/p_about.html" );
 		$("#page #p_about").show();
 		$( "#about" ).addClass("selected");
 	} 
@@ -22,7 +23,8 @@
 	//показывает текст статьи "инструкция" и меняет вид нажатой кнопки меню
 	 function click_todo_show () 
 	{
-		hide_unselected (); 
+		hide_unselected ();
+		TestLoad.p_todo.load( "texts/p_todo.html" );		
 		$("#page #p_todo").show();
 		$( "#todo" ).addClass("selected");
 	} 
@@ -146,6 +148,8 @@ function RunTimer () {
 	TestParams = {};
 	function init_jquery (){
 		TestView.onpage = $(".onpage");//все содержимое страниц
+		TestView.p_about = $("p_about");//содержимое страницы "о методе"
+		TestView.p_todo = $("p_todo");//содержимое страницы "инструкция"
 		TestView.attention = $("#attention");//кнопка "внимание"
 		TestView.click = $("#click");//кнопка "воспроизвести промежуток"
 		TestView.errorMesage = $("#error");//сообщение об ошибках
