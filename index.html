@@ -22,9 +22,9 @@
     <header>
 		<ul>
 			<li class="menu" id="about" onclick = "click_about_show ()">О методе</li>
-			<li class="menu" id="todo" onclick = "click_todo_show ()">Инструкция</li>
-			<li class="menu" id="simulation" onclick="start_simulation()">Тренировка</li>
-			<li class="menu" id="test" onclick = "start_test()">Начать тест</li>
+			<li class="menu" id="todo" onclick = "click_todo_show ()">Прочесть инструкцию</li>
+			<li class="menu" id="simulation" onclick="click_simulation_show()">Тренировка</li>
+			<li class="menu" id="test" onclick = "click_test_show()">Начать тест</li>
 			<li class="menu" id="tau" onclick="results_show ()">Результаты</li>
 			<!-- <li class="menu" id="faq" onclick="click_faq_show ()">Частые вопросы</li> -->
 			
@@ -135,10 +135,13 @@
 			Отлично! Можете потренироваться еще, или <h4>пройти тест сейчас</h4>
 			
 		</div>
-		<div class= "button onpage" id="totest" onclick="">
-			Пройти тест сейчас
+		<div class= "button onpage" id="tosimulation" onclick="start_simulation()">
+			Прежде, чем проходить тест, прослушайте и постарайтесь воспроизвести несколько временных промежутков. <h4>потренироваться сейчас</h4>
 		</div>
 		
+		<div class= "button onpage" id="totest" onclick="start_test()">
+			Вам будут предложены 16 временных промежутков. Воспроизведите их так, как чувствуете!<h4>пройти тест сейчас</h4>
+		</div>
 				
 </div>		
 	

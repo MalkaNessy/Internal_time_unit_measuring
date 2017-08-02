@@ -25,11 +25,25 @@
 		$( "#todo" ).addClass("selected");
 	} 
 	
+	function click_simulation_show()
+	{
+		hide_unselected ();
+		$("#tosimulation").show();
+		$( "#simulation" ).addClass("selected");
+	}
+	
+	function click_test_show()
+	{
+		hide_unselected ();
+		$("#totest").show();
+		$( "#test" ).addClass("selected");
+	}
+	
 	//показывает текст статьи "ФАКУ" и меняет вид нажатой кнопки меню
 	function click_faq_show ()
 	{
 		hide_unselected ();
-		TestView.p_faq.load( "texts/p_todo.html" );
+		TestView.p_faq.load( "texts/p_faq.html" );
 		$("#page #p_faq").show();
 		$( "#faq" ).addClass("selected");
 	}
@@ -179,14 +193,14 @@ function RunTimer () {
 	function explain (){
 		TestView.explain.toggle();
 	}
-	//TestLoad.explain.load( "texts/holerik.html" );
+	
 	
 	
 	//после нажатия на пункт меню "Начать тест"...
 	function start_test(){
 		TestParams.error = 0; //количество сделанных ошибок
-		TestParams.max_errors = 2; //количество максимально допустимых ошибок
-		count = 1; //количество проходов теста
+		TestParams.max_errors = 5; //количество максимально допустимых ошибок
+		count = 1; //количество сделанных проходов теста
 		
 		click_test();
 	}
@@ -199,7 +213,7 @@ function RunTimer () {
 		
 		
 		TestParams.thisIsSimulation = false; //показывает, проходим мы сейчас симуляцию или тест
-		TestParams.try_count = 4;
+		TestParams.try_count = 16; //должно быть 16
 		init_jquery ();
 		
 		hide_unselected ();	
@@ -338,7 +352,7 @@ function RunTimer () {
 	{
 		if (TestParams.thisIsSimulation){
 			$("#ok").show();
-			//$("#totest").show();
+			
 			TestParams.thisIsSimulation = false;
 		}
 		else {
@@ -360,7 +374,7 @@ function RunTimer () {
 	//...запускает процедуру тренировки
 	function click_simulation()
 	{
-		TestParams.try_count = 2;
+		TestParams.try_count = 4; //должно быть 4-5
 		TestParams.thisIsSimulation = true;
 		init_jquery ();
 		
@@ -405,13 +419,13 @@ function RunTimer () {
 		
 		if (average <=0.79){
 			document.getElementById("temperament").value = "холерик";
-			TestView.explain.load(  "texts/holerik.html" );
+			TestView.explain.load("texts/holerik.html");
 			
 		}
 		else if(average <=0.87){
 			//average >= 0.87
 			document.getElementById("temperament").value = "сангвиник";
-			TestView.explain.load( "texts/sangvinik.html"  );
+			TestView.explain.load("texts/sangvinik.html");
 		}
 		else if (average <=0.93){
 			//average >= 0.9
@@ -486,7 +500,7 @@ function RunTimer () {
 		return String(n) === str && n >= 0;
 	} */
 	
-	/*TestView.explain.load( "texts/holerik.html" );*/
+	
 	
 	
 	
