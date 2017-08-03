@@ -403,10 +403,12 @@ function RunTimer () {
 		var taucount = 0;
 		var sum = 0;
 		var error = 0;
-		
-		for (var i = 0; i < Object.keys(data).length; i++) {
-			
-			sum += data[i+1].result;
+		//for(var index in data) {console.log(data[index].result);};
+		//for (var i = 0; i < Object.keys(data).length; i++) {
+		for(var index in data)
+		{
+			//sum += data[i+1].result;
+			sum +=data[index].result;
 			console.log("sum: " + sum);
 			taucount++;
 			console.log("taucount: " + taucount);
