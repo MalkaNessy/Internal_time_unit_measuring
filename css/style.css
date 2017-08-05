@@ -112,7 +112,7 @@ ul#ulwhat {
 .explain {
 	text-align: left;
 	margin: auto;
-	display: none;
+	/* display: none; */
 	width: 80%;
 }
 

@@ -34,7 +34,7 @@
 			<li class="menu" id="todo" onclick = "click_todo_show ()">Прочесть инструкцию</li>
 			<li class="menu" id="simulation" onclick="click_simulation_show()">Тренировка</li>
 			<li class="menu" id="test" onclick = "click_test_show()">Начать тест</li>
-			<li class="menu" id="tau" onclick="results_show ()">Результаты</li>
+			<!-- <li class="menu" id="tau" onclick="results_show ()">Результаты</li> -->
 			<!-- <li class="menu" id="faq" onclick="click_faq_show ()">Частые вопросы</li> -->
 			
 		</ul>
@@ -113,9 +113,9 @@
 			1/4 ББЦ = <input type="text" class="temp" id="c4_result" value=""><br>
 			<br>
 			Ваш тип темперамента: <input type="text" class="temp" id="temperament" value=""><br>
-			<h4 onclick="explain()">Что это значит?</h4> 
+			<!-- <h4 onclick="explain()">Что это значит?</h4> --> 
 			<div class="explain">
-				сначала пройдите тест
+				здесь должно быть описание типа, если его нет - просим прощения, значит что-то не так пошло в программе. Пожалуйста, сообщите нам об ошибке
 			</div>
 		</div>
 		
@@ -137,11 +137,11 @@
 		</div>
 	  
 		<div class= "button onpage" id="toresult" onclick="all_results()">
-			Готово. Можно посмотреть результаты
+			Готово. Можно увидеть результаты
 		</div>
 		
 		<div class= "button onpage" id="ok" onclick="start_test()">
-			Отлично! Можете потренироваться еще, или <h4>пройти тест сейчас</h4>
+			Тренировка закончена. Можете повторить, или <h4>пройти тест сейчас</h4>
 			
 		</div>
 		<div class= "button onpage" id="tosimulation" onclick="start_simulation()">

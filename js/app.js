@@ -190,9 +190,9 @@ function RunTimer () {
 		TestLoad.p_todo = "texts/p_todo.html";
 	} */
 	
-	function explain (){
+	/* function explain (){
 		TestView.explain.toggle();
-	}
+	} */
 	
 	
 	
@@ -213,7 +213,7 @@ function RunTimer () {
 		
 		
 		TestParams.thisIsSimulation = false; //показывает, проходим мы сейчас симуляцию или тест
-		TestParams.try_count = 16; //должно быть 16
+		TestParams.try_count = 2; //должно быть 16
 		init_jquery ();
 		
 		hide_unselected ();	
@@ -419,22 +419,28 @@ function RunTimer () {
 		console.log("average: " + average);
 		
 		
-		if (average <=0.79){
+/* Если результат измерения Тау получился в диапазоне 0,69-0,79 с., то вы холерик
+Если результат измерения Тау получился в диапазоне 0,80-0,86 с., то вы сангвиник
+Если результат измерения Тау получился в диапазоне 0,87-0,94 с., то вы равновесный
+Если результат измерения Тау получился в диапазоне 0,95-1,00 с., то вы меланхолик
+Если результат измерения Тау получился в диапазоне 1,01 - 1,12 с., то вы флегматик */
+		
+		if (average <0.80  ){
 			document.getElementById("temperament").value = "холерик";
 			TestView.explain.load("texts/holerik.html");
 			
 		}
-		else if(average <=0.87){
+		else if(average <0.87){
 			//average >= 0.87
 			document.getElementById("temperament").value = "сангвиник";
 			TestView.explain.load("texts/sangvinik.html");
 		}
-		else if (average <=0.93){
+		else if (average <0.95){
 			//average >= 0.9
 			document.getElementById("temperament").value = "равновесный";
 			TestView.explain.load("texts/ravnovesny.html"  );
 		}
-		else if (average <=1){
+		else if (average <1.01){
 			//average >= 0.9
 			document.getElementById("temperament").value = "меланхолик";
 			TestView.explain.load( "texts/melanholik.html"   );
