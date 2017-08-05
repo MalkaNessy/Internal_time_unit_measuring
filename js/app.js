@@ -136,6 +136,8 @@ function RunTimer () {
 		function click_show ()
 		{
 			console.log("click_show start" );
+			document.getElementById("counter").innerHTML =" "+ count + "/"+ TestParams.try_count;
+			
 			TestView.click.show();
 		}
 		

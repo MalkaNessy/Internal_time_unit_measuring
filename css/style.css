@@ -184,7 +184,10 @@ ul#ulwhat {
 	
 }
 
-
+#counter {
+	color: #cce1f2;
+	font-size: 20px;
+}
 
 #no {
 	/*сообщение о том, что тест не засчитан*/
