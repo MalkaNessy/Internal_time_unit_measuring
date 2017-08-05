@@ -80,9 +80,13 @@ function RunTimer () {
 		//подает звуковой сигнал
 		function playAudio() {
 			console.log("playAudio() start" );
-			var x = document.getElementById("myAudio");
-			console.log("x: " + x);		
-			x.play();
+			var sound = new Howl({
+				src: ['beep100.mp3']
+			});
+			sound.play();
+			//var x = document.getElementById("myAudio");
+			//console.log("x: " + x);		
+			//x.play();
 		}
 		
 		//показывает кнопку "внимание" в заданном промежутке
@@ -213,7 +217,7 @@ function RunTimer () {
 		
 		
 		TestParams.thisIsSimulation = false; //показывает, проходим мы сейчас симуляцию или тест
-		TestParams.try_count = 2; //должно быть 16
+		TestParams.try_count = 16; //должно быть 16
 		init_jquery ();
 		
 		hide_unselected ();	
