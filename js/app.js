@@ -89,6 +89,15 @@ function RunTimer () {
 			//x.play();
 		}
 		
+		function playAudioButton() {
+			console.log("playAudioButton() start" );
+			var sound = new Howl({
+				src: ['beep100high.mp3']
+			});
+			sound.play();
+		}
+		
+		
 		//показывает кнопку "внимание" в заданном промежутке
 		function attention_show () 
 		{
@@ -236,6 +245,7 @@ function RunTimer () {
 		if(!pressed)
 		{
 			TestView.click.addClass("clicked");
+			playAudioButton();
 			var start_date = new Date(); // засекли время
 			start = start_date.valueOf();
 			pressed = true;
@@ -258,6 +268,7 @@ function RunTimer () {
 		if (pressed)
 		{
 			//$( "#click" ).removeClass("clicked");
+			playAudioButton();
 			var end_date = new Date(); // конец измерения
 			end = end_date.valueOf(); 
 			console.log("end: " + end);
@@ -540,7 +551,7 @@ $(document).ready(function()
 	/* init_load (); */
 	init_jquery ();
 	$(".onpage").hide();
-	click_about_show ();
+	click_todo_show ();
 	set_intervals ();
 		
 });
