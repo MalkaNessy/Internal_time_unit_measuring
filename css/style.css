@@ -20,7 +20,7 @@ ul {
 	text-align: center;
 	width: 90%;
     margin-top: 30px;
-	
+	padding-left: 0;
 	background-color: #FFBC31;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -133,9 +133,10 @@ ul#ulwhat {
 
 #attention {
 	/*кнопка "внимание" */
-	border: 20px solid #FFDD98;
+	
 	width: 250px;
 	color: #477F3B;
+	background-color: white;
 	font-size: 44px;
 	font-weight: 900px;
 	border-radius: 5px;
@@ -165,9 +166,9 @@ ul#ulwhat {
 	border-bottom: 9px solid #477E01;
 } 
  
-#error, #ok, #toresult  {
+#ok, #toresult  {
 	/*кнопка ошибок при тренировке или невыполненном тесте, кнопка "посмотреть результаты" */
-	width: 350px;
+	width: 40%;
 	padding: 15px;
 	
 	/* background-color: #FFDD98;
@@ -182,6 +183,26 @@ ul#ulwhat {
 	border-right: 9px solid #95822C;
 	border-bottom: 12px solid #7F6C16;
 	
+}
+
+#error {
+	width: 40%;
+	padding: 15px;
+	background-color: #F5DEA0;
+	border-top: 12px solid #C53F47;
+	border-left: 12px solid #DC555E;
+	border-right: 9px solid #DC555E;
+	border-bottom: 12px solid #A9262F;
+}
+
+#totest, #tosimulation{
+	width: 50%;
+	padding: 15px;
+	background-color: #F5DEA0;
+	border-top: 12px solid #78640D;
+	border-left: 12px solid #95822C;
+	border-right: 9px solid #95822C;
+	border-bottom: 12px solid #7F6C16;
 }
 
 #counter {
