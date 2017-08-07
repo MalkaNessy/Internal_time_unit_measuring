@@ -181,6 +181,7 @@ function RunTimer () {
 	TestView = {};
 	TestParams = {};
 	function init_jquery (){
+		console.log("init_jquery");
 		TestView.onpage = $(".onpage");//все содержимое страниц
 		TestView.p_about = $("#p_about");//содержимое страницы "о методе"
 		TestView.p_todo = $("#p_todo");//содержимое страницы "инструкция"
@@ -280,7 +281,7 @@ function RunTimer () {
 			result = Math.round(result * 1000) / 1000 ;
 			console.log("result: " + result);
 			
-			if (!(result<0.55 || result>1.25)){
+			if (!(result<0.65 || result>1.15)){
 				//document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
 				add_row_to_data (count);
 				set_time (count);
@@ -295,12 +296,12 @@ function RunTimer () {
 			if (TestParams.thisIsSimulation){
 				pressed = false;
 				console.log ("thisIsSimulation pressed = " + pressed)
-				if (result < 0.55){
+				if (result < 0.65){
 					TestView.onpage.hide();
 					document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
 					TestView.errorMesage.show();
 				}
-				else if (result > 1.25){
+				else if (result > 1.15){
 					TestView.onpage.hide();
 					document.getElementById("error").innerHTML = "Вы слишком долго ждали, чтобы нажать на кнопку. Будьте внимательнее. <h4>продолжить тренировку </h4>"
 					TestView.errorMesage.show();
@@ -331,10 +332,10 @@ function RunTimer () {
 		console.log ("end_click_continues start, try_count = " + TestParams.try_count + "count = " + count);
 		if (count<TestParams.try_count){
 			if (TestParams.thisIsSimulation) {
-				click_simulation(3);
+				click_simulation();
 			}
 			else {
-				click_test(4);
+				click_test();
 			}
 			count++;
 				
@@ -551,7 +552,7 @@ $(document).ready(function()
 	/* init_load (); */
 	init_jquery ();
 	$(".onpage").hide();
-	click_todo_show ();
+	click_about_show ();
 	set_intervals ();
 		
 });
