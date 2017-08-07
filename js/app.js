@@ -2,8 +2,8 @@
 	
 	//прячет все содержимое страницы, меняет css-класс кнопки на "selected" и обратно
 	function hide_unselected () 
-	{
-		$(".onpage").hide();
+	{ 
+		$(".onpage").hide(); 
 		
 	}
 	
@@ -128,13 +128,13 @@ function RunTimer () {
 		{
 			console.log("button_hide start" );
 			TestView.attention.hide();
-			set_stimul (count);
+			set_stimul (TestParams.count);
 		}	
 		
 		// подает звуковые сигналы в заданном промежутке 
 		function set_stimul (count)
 		{
-			console.log("set_stimul (count) start, count: " + count);
+			console.log("set_stimul (count) start, count: " + TestParams.count);
 			playAudio();
 			setTimeout(playAudio, intervals[count]);
 			setTimeout(click_show, (intervals[count]+1000));
@@ -145,7 +145,7 @@ function RunTimer () {
 		function click_show ()
 		{
 			console.log("click_show start" );
-			document.getElementById("counter").innerHTML =" "+ count + "/"+ TestParams.try_count;
+			document.getElementById("counter").innerHTML =" "+ TestParams.count + "/"+ TestParams.try_count;
 			
 			TestView.click.show();
 		}
@@ -188,7 +188,8 @@ function RunTimer () {
 		TestView.p_faq = $("#p_faq");//содержимое страницы "faq"
 		TestView.attention = $("#attention");//кнопка "внимание"
 		TestView.click = $("#click");//кнопка "воспроизвести промежуток"
-		TestView.errorMesage = $("#error");//сообщение об ошибках
+		TestView.errorMesage = $("#error");//сообщение об ошибках в тренировке
+		TestView.errorTestMesage = $("#errorTest");//сообщение о неправильном тесте
 		TestView.menu = $(".menu");//все кнопки меню
 		TestView.menusimulation = $("#simulation");//кнопка меню "симуляция"
 		TestView.explain = $(".explain");//место для описания типа темперамента
@@ -216,7 +217,7 @@ function RunTimer () {
 	function start_test(){
 		TestParams.error = 0; //количество сделанных ошибок
 		TestParams.max_errors = 5; //количество максимально допустимых ошибок
-		count = 1; //количество сделанных проходов теста
+		TestParams.count = 1; //количество сделанных проходов теста
 		
 		click_test();
 	}
@@ -264,7 +265,7 @@ function RunTimer () {
 	function end_click () 
 	{
 		console.log("end_click start");
-		console.log("count: " + count);
+		console.log("count: " + TestParams.count);
 		
 		if (pressed)
 		{
@@ -276,77 +277,81 @@ function RunTimer () {
 						
 			temp_result = end - start;
 			console.log("temp_result: " + temp_result);
-			console.log("intervals.count: " + intervals[count]);
-			result = temp_result/intervals[count];
+			console.log("intervals.count: " + intervals[TestParams.count]);
+			result = temp_result/intervals[TestParams.count];
 			result = Math.round(result * 1000) / 1000 ;
 			console.log("result: " + result);
-			
+			check_test_result ();
+		}
+	}
+	
+	function check_test_result ()	
+	{
+		if (TestParams.thisIsSimulation){
+			check_simulation_result();
+		}
+		else 
+		{
 			if (!(result<0.65 || result>1.15)){
-				//document.getElementById("demo").innerHTML = "start = " + data[count].start+ " ms, " + "end = " + data[count].end+ " ms, " + "temp_result = " + data[count].temp_result+ " ms " + "result = " + data[count].result+ " ms ";
-				add_row_to_data (count);
-				set_time (count);
+				add_row_to_data (TestParams.count);
+				set_time (TestParams.count);
 				
 				pressed = false;
 				console.log("result normal: " + result + "pressed = " + pressed);
+				end_click_continues ();
 			}/////////
 			else {
 				TestParams.error++;
 				console.log("result normal: " + result + "error = " + TestParams.error);
-			}	
-			if (TestParams.thisIsSimulation){
 				pressed = false;
-				console.log ("thisIsSimulation pressed = " + pressed)
-				if (result < 0.65){
-					TestView.onpage.hide();
-					document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
-					TestView.errorMesage.show();
-				}
-				else if (result > 1.15){
-					TestView.onpage.hide();
-					document.getElementById("error").innerHTML = "Вы слишком долго ждали, чтобы нажать на кнопку. Будьте внимательнее. <h4>продолжить тренировку </h4>"
-					TestView.errorMesage.show();
-				}
-				else end_click_continues ();
-			}
-			else {
-				console.log("not simulation, error = " + TestParams.error);
-				pressed = false;
-				if (TestParams.error<TestParams.max_errors){
-					console.log("error<max_errors");
-					end_click_continues ();
-				}
-				else {
-					console.log("error>=max_errors");
-					/* count = 1;
-					error = 0; */
-					TestView.onpage.hide();
-					document.getElementById("error").innerHTML = 'Упс, что-то пошло не так. Успокойтесь и попробуйте еще раз <h4 onclick="start_simulation()">потренироваться</h4> <h4 onclick = "start_test()">пройти тест</h4>'
-					TestView.errorMesage.show();
-				}
+				end_click_continues ();
 			}
 		}	
+		
 	}
+	
+	
+	function check_simulation_result(){		
+		console.log ("check_simulation_result" );	
+		pressed = false;
+		
+		if (result < 0.65){
+			TestView.onpage.hide();
+			document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
+			TestView.errorMesage.show();
+		}
+		else if (result > 1.15){
+			TestView.onpage.hide();
+			document.getElementById("error").innerHTML = "Вы слишком долго ждали, чтобы нажать на кнопку. Будьте внимательнее. <h4>продолжить тренировку </h4>"
+			TestView.errorMesage.show();
+		}
+		else end_click_continues ();
+			
+	
+	}
+	
+	
+	
 	
 	//продолжает процедуру тренировки или тестирования
 	function end_click_continues (){
-		console.log ("end_click_continues start, try_count = " + TestParams.try_count + "count = " + count);
-		if (count<TestParams.try_count){
+		console.log ("end_click_continues start, try_count = " + TestParams.try_count + "count = " + TestParams.count);
+		if (TestParams.count<TestParams.try_count){
 			if (TestParams.thisIsSimulation) {
 				click_simulation();
 			}
 			else {
 				click_test();
 			}
-			count++;
+			TestParams.count++;
 				
 		}
 		else 
 		{
-			/* count = 1;
-			error = 0; */
-			console.log("to results, count= " + count);
+			console.log("to results, count= " + TestParams.count);
 			TestView.onpage.hide();
 			to_result_show();
+			
 		}
 		
 	} 
@@ -374,7 +379,14 @@ function RunTimer () {
 			TestParams.thisIsSimulation = false;
 		}
 		else {
-		$("#toresult").show();}
+			if (TestParams.error >= TestParams.max_errors){
+			document.getElementById("errorTest").innerHTML = "Похоже, у вас был тяжелый день, или вы проходили тест не в своем спокойном состоянии. Эти результы не надежны. Рекомендуем отдохнуть и пройти тест еще раз <h4>посмотреть результаты</h4> "
+			TestView.errorTestMesage.show();	
+			}
+			else{
+				$("#toresult").show();
+			}
+		}
 		
 	}
 	
@@ -385,7 +397,7 @@ function RunTimer () {
 	
 	//при нажатии пункта меню "тренировка"...
 	function start_simulation (){
-		count = 1; //количество проходов теста
+		TestParams.count = 1; //количество проходов теста
 		click_simulation();
 	}
 

@@ -185,8 +185,8 @@ ul#ulwhat {
 	
 }
 
-#error {
-	width: 40%;
+#error, #errorTest {
+	width: 50%;
 	padding: 15px;
 	background-color: #F5DEA0;
 	border-top: 12px solid #C53F47;
@@ -284,5 +284,7 @@ input {
 }
 А в папке fonts естественно были файлы buxtonsketch.eot, buxtonsketch.ttf и buxtonsketch.woff.
 */
+
+
 
 @font-face { font-family:Dauphinn; src:/fonts/Dauphinn.ttf;}
