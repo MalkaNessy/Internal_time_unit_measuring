@@ -24,3 +24,24 @@
 }
 
 @media screen and (min-width: 720px) {}
+
+/*
+## начало цитаты ##
+Если я правильно понимаю, то человеку надо переписать функцию start_test как-то так:
+    //после нажатия на пункт меню "Начать тест"...
+    function start_test(){
+        TestParams.error = 0; //количество сделанных ошибок
+        TestParams.max_errors = 5; //количество максимально допустимых ошибок
+        count = 1; //количество сделанных проходов теста
+        var x = document.getElementById("myAudio");
+   x.play();
+   setTimeout(function(){
+     x.pause();
+     x.currentTime=0;
+   },0);
+        click_test();
+    }
+
+Ну в и остальное, связанное с началом писка добавить play pause на клик. Это решит проблему работы в Android и iOS.
+
+Добавить cursor: pointer; в css для всех кликабельных элементов. Это значительно повысит понятность.*/

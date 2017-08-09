@@ -564,7 +564,7 @@ $(document).ready(function()
 	/* init_load (); */
 	init_jquery ();
 	$(".onpage").hide();
-	click_about_show ();
+	click_todo_show ();
 	set_intervals ();
 		
 });
