@@ -43,11 +43,12 @@ ul li {
 	border-bottom: 9px solid #266EA9;
 	
 	box-shadow:9px 6px #999;
+	cursor: pointer;
 }
 
 ul li:hover{
 	color: #fff;
-	background-color: #5E9913;
+	box-shadow:none;
 }
 
 .selected {
@@ -229,7 +230,7 @@ h4 {
 	width: 80%;
 	margin: auto;
 	margin-top: 20px;
-	
+	cursor: pointer;
 }
 
 h3{
