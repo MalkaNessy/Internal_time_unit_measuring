@@ -25,17 +25,30 @@
 		$( "#todo" ).addClass("selected");
 	} 
 	
+	$tosimulation = '<div class= "button onpage" id="tosimulation" onclick="start_simulation()">Прежде, чем проходить тест, прослушайте и постарайтесь воспроизвести несколько временных промежутков. <h4>потренироваться сейчас</h4></div>';
+	$totest = '<div class= "button onpage" id="totest" onclick="start_test()">Вам будут предложены 16 временных промежутков. Воспроизведите их так, как чувствуете!<h4>пройти тест сейчас</h4></div>';
+	$toresult = '<div class= "button onpage" id="toresult" onclick="all_results()">Готово. Можно увидеть результат</div>';
+	$ok = '<div class= "button onpage" id="ok" onclick="start_test()">Тренировка закончена. Можете повторить, или <h4>пройти тест сейчас</h4></div>';
+	$error = '<div class= "button onpage" id="error" onclick="end_click_continues ()"></div>';
+	$errorTest = '<div class= "button onpage" id="errorTest" onclick="all_results()"></div>';
+	
+	
+	
 	function click_simulation_show()
 	{
 		hide_unselected ();
-		$("#tosimulation").show();
+		/* $("#tosimulation").show(); */
+		document.getElementById("message").innerHTML =$tosimulation;
+		/* $("#message").show(); */
 		$( "#simulation" ).addClass("selected");
 	}
 	
 	function click_test_show()
 	{
 		hide_unselected ();
-		$("#totest").show();
+		/* $("#totest").show(); */
+		document.getElementById("message").innerHTML =$totest;
+		/* $("#message").show(); */
 		$( "#test" ).addClass("selected");
 	}
 	
@@ -145,7 +158,7 @@ function RunTimer () {
 		function click_show ()
 		{
 			console.log("click_show start" );
-			document.getElementById("counter").innerHTML =" "+ TestParams.count + "/"+ TestParams.try_count;
+			document.getElementById("counter").innerHTML =" "+ TestParams.count + " из "+ TestParams.try_count;
 			
 			TestView.click.show();
 		}
@@ -218,7 +231,7 @@ function RunTimer () {
 		TestParams.error = 0; //количество сделанных ошибок
 		TestParams.max_errors = 5; //количество максимально допустимых ошибок
 		TestParams.count = 1; //количество сделанных проходов теста
-		
+		init_jquery ();
 		click_test();
 	}
 	
@@ -231,7 +244,7 @@ function RunTimer () {
 		
 		TestParams.thisIsSimulation = false; //показывает, проходим мы сейчас симуляцию или тест
 		TestParams.try_count = 16; //должно быть 16
-		init_jquery ();
+		
 		
 		hide_unselected ();	
 		attention_show ();
@@ -317,11 +330,13 @@ function RunTimer () {
 		
 		if (result < 0.65){
 			TestView.onpage.hide();
+			document.getElementById("message").innerHTML = $error;
 			document.getElementById("error").innerHTML = "Вы слишком быстро нажали на кнопку. Будьте внимательнее. <h4>продолжить тренировку</h4> "
 			TestView.errorMesage.show();
 		}
 		else if (result > 1.15){
 			TestView.onpage.hide();
+			document.getElementById("message").innerHTML = $error;
 			document.getElementById("error").innerHTML = "Вы слишком долго ждали, чтобы нажать на кнопку. Будьте внимательнее. <h4>продолжить тренировку </h4>"
 			TestView.errorMesage.show();
 		}
@@ -374,17 +389,21 @@ function RunTimer () {
 	function to_result_show()
 	{
 		if (TestParams.thisIsSimulation){
-			$("#ok").show();
-			
+			/* $("#ok").show(); */
+			document.getElementById("message").innerHTML =$ok;
+			/* $("#message").show(); */
 			TestParams.thisIsSimulation = false;
 		}
 		else {
 			if (TestParams.error >= TestParams.max_errors){
+			document.getElementById("message").innerHTML =$errorTest;	
 			document.getElementById("errorTest").innerHTML = "Похоже, у вас был тяжелый день, или вы проходили тест не в своем спокойном состоянии. Эти результы не надежны. Рекомендуем отдохнуть и пройти тест еще раз <h4>посмотреть результаты</h4> "
 			TestView.errorTestMesage.show();	
 			}
 			else{
-				$("#toresult").show();
+				/* $("#toresult").show(); */
+				document.getElementById("message").innerHTML =$toresult;
+				/* $("#message").show() */;
 			}
 		}
 		
