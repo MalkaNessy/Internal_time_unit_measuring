@@ -1,47 +1,43 @@
-@media screen and (max-width: 480px) {
-	header {
-		width: 480px;
-		
-	}
-	ul {
-		text-align: left;
-		padding-left: 2px;
-		background-color: white;
-		
-	}
+/* // Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap */
+
+/* .container {
+	background-color: yellow;
+} */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
 	
-	ul li {
-		margin: 0;
-		padding: 2px;
-		text-align: left;
-		font-size: 12px;
-		line-height:normal;
-		width: 100%;
-		border: 0;
-		/* border-bottom: 1px solid #4C96D3; */
-		box-shadow: none;
-	}
+	.text {font-size: 14px;}
+	h3{width: 50%;}
+	
+	ul#ulwhat li {line-height:1.5;}
+	/* .container {
+		background-color: LightGray;
+	} */
 }
 
-@media screen and (min-width: 720px) {}
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {  
 
-/*
-## начало цитаты ##
-Если я правильно понимаю, то человеку надо переписать функцию start_test как-то так:
-    //после нажатия на пункт меню "Начать тест"...
-    function start_test(){
-        TestParams.error = 0; //количество сделанных ошибок
-        TestParams.max_errors = 5; //количество максимально допустимых ошибок
-        count = 1; //количество сделанных проходов теста
-        var x = document.getElementById("myAudio");
-   x.play();
-   setTimeout(function(){
-     x.pause();
-     x.currentTime=0;
-   },0);
-        click_test();
-    }
+	.text {text-align: justify;font-size: 16px;}
+	h3{font-size: 20px;}
+	h6{font-size: 20px;}
+	
+	/* .container {
+		background-color: LightGreen;
+	} */
 
-Ну в и остальное, связанное с началом писка добавить play pause на клик. Это решит проблему работы в Android и iOS.
 
-Добавить cursor: pointer; в css для всех кликабельных элементов. Это значительно повысит понятность.*/
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+ 
+	h3{font-size: 24px;}
+	
+
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
