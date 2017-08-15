@@ -9,11 +9,14 @@ body {
 	margin: auto;
 }
 
+ul {
+	list-style-type: none;
+}
 
 /****** меню ******/
 
 header {
-    height: 70px;
+    /* height: 70px; */
     text-align: center;
 }
 
@@ -21,43 +24,46 @@ ul#menu {
 	text-align: center;
 	/* width: 90%; */
     margin-top: 30px;
+	margin-bottom: 30px;
 	padding-left: 0;
-	background-color: #FFBC31;
+	/* background-color: #FFBC31; */
 	padding-top: 10px;
 	padding-bottom: 10px;
+	font-size: 0.8rem;
 }
 
 ul li {
-	display: inline-block;
+	/* display: inline-block; */
 	margin: 0 16px;
 	padding: 0 5px;
 	color: #fff;
 	text-align: center;
-	/* line-height: 30px; */
+	
 	
 	vertical-align: middle;
 	
 	background-color: #3F88C5;
-	border-top: 3px solid #3F88C5;
-	border-left: 9px solid #4C96D3;
-	border-right: 9px solid #4C96D3;
-	border-bottom: 9px solid #266EA9;
+	border-top: 2px solid #3F88C5;
+	border-left: 6px solid #4C96D3;
+	border-right: 6px solid #4C96D3;
+	border-bottom: 6px solid #266EA9;
 	
-	box-shadow:9px 6px #999;
+	/* box-shadow:9px 6px #999; */
 	cursor: pointer;
 }
 
-ul li:hover{
-	color: #fff;
+ul#menu li:hover{
+	color: black;
 	box-shadow:none;
+	cursor: pointer;
 }
 
 .selected {
 	background-color: #5E9913;
 	border-top: 3px solid #5E9913;
-	border-left: 9px solid #76B12A;
-	border-right: 9px solid #76B12A;
-	border-bottom: 9px solid #477E01;
+	border-left: 8px solid #76B12A;
+	border-right: 8px solid #76B12A;
+	border-bottom: 8px solid #477E01;
 }
 
 ul#ulwhat li {
@@ -132,10 +138,10 @@ ul#ulwhat {
 
 .button {
 	/*класс всех кнопок кроме меню*/
-	font-size: 24px;
+	font-size: 14px;
 	background-color: #FFDD98;
 	margin: auto;
-	margin-top: 60px;
+	margin-top: 50px;
 	padding-bottom: 10px;
 	text-align: center;
 	border-radius: 15px;
@@ -149,15 +155,15 @@ ul#ulwhat {
 	background-color: white;
 	font-size: 44px;
 	font-weight: 900px;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 }
 
 #click{
 	/*кнопка "воспроизведите промежуток" */
 	padding: 5px ;
 	text-align: center;
-	width: 260px;
-	font-size: 22px;
+	width: 250px;
+	font-size: 18px;
 	background-color: #3F88C5;
 	border-top: 3px solid #3F88C5;
 	border-left: 9px solid #4C96D3;
@@ -178,14 +184,8 @@ ul#ulwhat {
  
 #ok, #toresult  {
 	/*кнопка ошибок при тренировке или невыполненном тесте, кнопка "посмотреть результаты" */
-	width: 40%;
+	width: 80%;
 	padding: 15px;
-	
-	/* background-color: #FFDD98;
-	border-top: 12px solid #477E01;
-	border-left: 12px solid #76B12A;
-	border-right: 9px solid #5E9913;
-	border-bottom: 12px solid #477E01; */
 	
 	background-color: #F5DEA0;
 	border-top: 12px solid #78640D;
@@ -196,7 +196,7 @@ ul#ulwhat {
 }
 
 #error, #errorTest {
-	width: 50%;
+	width: 80%;
 	padding: 15px;
 	background-color: #F5DEA0;
 	border-top: 12px solid #C53F47;
@@ -206,7 +206,7 @@ ul#ulwhat {
 }
 
 #totest, #tosimulation{
-	width: 50%;
+	width: 80%;
 	padding: 15px;
 	background-color: #F5DEA0;
 	border-top: 12px solid #78640D;
@@ -217,7 +217,7 @@ ul#ulwhat {
 
 #counter {
 	color: #cce1f2;
-	font-size: 20px;
+	font-size: inherit;
 }
 
 #no {
@@ -231,15 +231,16 @@ h3{
 	text-align: center;
 	margin: auto;
 	margin-bottom: 20px;
-	margin-top: 30px;
+	margin-top: 10px;
 	font-size: 16px;
 }
 
 h4 {
 	background-color: #d6b756;
+	font-size: 16px;
 	padding: 5px;
 	border-radius: 15px;
-	width: 80%;
+	width: 85%;
 	margin: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;

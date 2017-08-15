@@ -12,6 +12,8 @@
 	h3{width: 50%;}
 	
 	ul#ulwhat li {line-height:1.5;}
+	ul#menu{ background-color: #FFBC31; }
+	
 	/* .container {
 		background-color: LightGray;
 	} */
@@ -21,8 +23,158 @@
 @media (min-width: 768px) {  
 
 	.text {text-align: justify;font-size: 16px;}
-	h3{font-size: 20px;}
+	h3{font-size: 22px;}
 	h6{font-size: 20px;}
+	ul#menu {
+		text-align: center;
+		/* width: 90%; */
+		margin-top: 30px;
+		padding-left: 0;
+		background-color: #FFBC31;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	ul li {
+		display: inline-block;
+		margin: 0 16px;
+		padding: 0 5px;
+		color: #fff;
+		text-align: center;
+		/* line-height: 30px; */
+		font-size: 16px;
+		vertical-align: middle;
+		
+		background-color: #3F88C5;
+		border-top: 3px solid #3F88C5;
+		border-left: 9px solid #4C96D3;
+		border-right: 9px solid #4C96D3;
+		border-bottom: 9px solid #266EA9;
+		
+		box-shadow:9px 6px #999;
+		cursor: pointer;
+	}
+
+	ul#menu li:hover{
+		color: #fff;
+		box-shadow:none;
+	}
+
+	.selected {
+		background-color: #5E9913;
+		border-top: 3px solid #5E9913;
+		border-left: 9px solid #76B12A;
+		border-right: 9px solid #76B12A;
+		border-bottom: 9px solid #477E01;
+	}
+	
+	h4 {
+		background-color: #d6b756;
+		font-size: 22px;
+		padding: 5px;
+		border-radius: 15px;
+		width: 80%;
+		margin: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		cursor: pointer;
+	
+	}
+		/****** кнопки ******/
+
+	.button {
+		/*класс всех кнопок кроме меню*/
+		font-size: 24px;
+		background-color: #FFDD98;
+		margin: auto;
+		margin-top: 60px;
+		padding-bottom: 10px;
+		text-align: center;
+		border-radius: 15px;
+	}
+
+	#attention {
+		/*кнопка "внимание" */
+		
+		width: 250px;
+		color: #477F3B;
+		background-color: white;
+		font-size: 44px;
+		font-weight: 900px;
+		border-radius: 5px;
+	}
+
+	#click{
+		/*кнопка "воспроизведите промежуток" */
+		padding: 5px ;
+		text-align: center;
+		width: 260px;
+		font-size: 22px;
+		background-color: #3F88C5;
+		border-top: 3px solid #3F88C5;
+		border-left: 9px solid #4C96D3;
+		border-right: 3px solid #3F88C5;
+		border-bottom: 9px solid #266EA9;
+	}
+	 
+	#click:active  {
+		/*нажатая кнопка "воспроизведите промежуток" */
+		
+		transform: translateY(5px);
+		background-color: #5E9913;
+		border-top: 3px solid #5E9913;
+		border-left: 9px solid #76B12A;
+		border-right: 3px solid #5E9913;
+		border-bottom: 9px solid #477E01;
+	} 
+	 
+	#ok, #toresult  {
+		/*кнопка ошибок при тренировке или невыполненном тесте, кнопка "посмотреть результаты" */
+		width: 40%;
+		padding: 15px;
+		
+		background-color: #F5DEA0;
+		border-top: 12px solid #78640D;
+		border-left: 12px solid #95822C;
+		border-right: 9px solid #95822C;
+		border-bottom: 12px solid #7F6C16;
+		
+	}
+
+	#error, #errorTest {
+		width: 50%;
+		padding: 15px;
+		background-color: #F5DEA0;
+		border-top: 12px solid #C53F47;
+		border-left: 12px solid #DC555E;
+		border-right: 9px solid #DC555E;
+		border-bottom: 12px solid #A9262F;
+	}
+
+	#totest, #tosimulation{
+		width: 50%;
+		padding: 15px;
+		background-color: #F5DEA0;
+		border-top: 12px solid #78640D;
+		border-left: 12px solid #95822C;
+		border-right: 9px solid #95822C;
+		border-bottom: 12px solid #7F6C16;
+	}
+
+	#counter {
+		color: #cce1f2;
+		font-size: inherit;
+	}
+
+	#no {
+		/*сообщение о том, что тест не засчитан*/
+		width: 450px;
+	}
+	
+	
+	
+	
+	
 	
 	/* .container {
 		background-color: LightGreen;
@@ -35,7 +187,7 @@
 @media (min-width: 992px) { 
  
 	h3{font-size: 24px;}
-	
+
 
 }
 
