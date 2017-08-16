@@ -172,10 +172,22 @@
 	}
 	
 	
-	
-	
-	
-	
+	.cols {
+	margin: auto;
+	}
+
+	.col_left{
+		float: left;
+		width: 47%;
+		padding-left: 15px;
+	}
+
+	.col_right{
+		float: left;
+		width: 47%;
+		padding-left: 30px;
+	}
+		
 	/* .container {
 		background-color: LightGreen;
 	} */

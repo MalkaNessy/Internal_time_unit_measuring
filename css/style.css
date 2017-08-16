@@ -104,12 +104,14 @@ ul#ulwhat {
 	/* float: left;
 	width: 47%;
 	padding-left: 15px; */
+	
 }
 
 .col_right{
 	/* float: left;
 	width: 47%;
 	padding-left: 30px; */
+	
 }
 
 #p_tau {
@@ -162,7 +164,7 @@ ul#ulwhat {
 	/*кнопка "воспроизведите промежуток" */
 	padding: 5px ;
 	text-align: center;
-	width: 250px;
+	width: 200px;
 	font-size: 18px;
 	background-color: #3F88C5;
 	border-top: 3px solid #3F88C5;

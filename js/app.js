@@ -62,14 +62,14 @@
 	}
 	
 	//показывает таблицу результатов
-	function results_show ()
+	/* function results_show ()
 	{
 		hide_unselected ();
 		$("#tau").addClass("selected");
 		$("#page #table").hide(); 
 		$("#page #p_tau").show();
 		
-	}
+	} */
 	
 	//выводит заданные интервалы в таблицу результатов
 	function set_intervals ()
@@ -566,13 +566,15 @@ function RunTimer () {
 	
 $(document).ready(function()
 {
+	$("#page #table").hide();
+	$(".onpage").hide();
 	//class selected при нажатии на любой пункт меню
 	$(".menu").click(function(){
 		$(".menu").removeClass("selected");
 		$(this).addClass("selected");
 		}
 	);
-	
+	 
 	//что делает кнопка "можете проходить настоящий тест" (после тренировки)
 	$("#ok").click(function(){
 			$(".menu").removeClass("selected");
@@ -582,7 +584,7 @@ $(document).ready(function()
 	);
 	/* init_load (); */
 	init_jquery ();
-	$(".onpage").hide();
+	
 	click_todo_show ();
 	set_intervals ();
 		
