@@ -187,7 +187,27 @@
 		width: 47%;
 		padding-left: 30px;
 	}
+	
+	#cont p{
 		
+		/* width: 30%; */
+		padding: 0;
+		margin:0;
+		list-style-type: circle;
+	}
+	
+	/* ul#cont li{
+		
+		background-color: transparent;
+		border: none;
+		margin-left: 0;
+		
+		color: black;
+		text-align: left;
+		box-shadow: none;
+	} */
+
+	
 	/* .container {
 		background-color: LightGreen;
 	} */

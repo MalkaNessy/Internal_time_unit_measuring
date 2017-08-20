@@ -282,6 +282,26 @@ h6{
 	font-size: 1rem;
 }
 
+#cont p{
+	padding: 0;
+		margin:0;
+		display: list-item;
+ list-style-position: inside;
+  list-style-type: circle;
+}
+
+	/* ul#cont li{
+		
+		background-color: transparent;
+		border: none;
+		margin-left: 0;
+		list-style-type: circle;
+		color: black;
+		text-align: left;
+		box-shadow: none;
+	} */
+
+
 
 footer {
   font-size: 0.75em;

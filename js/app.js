@@ -25,6 +25,16 @@
 		$( "#todo" ).addClass("selected");
 	} 
 	
+	function click_contacts_show ()
+	{
+		hide_unselected ();
+		TestView.p_contacts.load( "texts/p_contacts.html" );
+		$("#page #p_contacts").show();
+		$( "#contacts" ).addClass("selected");
+	}
+
+	
+	
 	$tosimulation = '<div class= "button onpage" id="tosimulation" onclick="start_simulation()">Прежде, чем проходить тест, прослушайте и постарайтесь воспроизвести несколько временных промежутков. <h4>потренироваться сейчас</h4></div>';
 	$totest = '<div class= "button onpage" id="totest" onclick="start_test()">Вам будут предложены 16 временных промежутков. Воспроизведите их так, как чувствуете!<h4>пройти тест сейчас</h4></div>';
 	$toresult = '<div class= "button onpage" id="toresult" onclick="all_results()">Готово. Можно увидеть результат</div>';
@@ -52,14 +62,7 @@
 		$( "#test" ).addClass("selected");
 	}
 	
-	function click_contacts_show ()
-	{
-		hide_unselected ();
-		TestView.p_faq.load( "texts/p_contacts.html" );
-		$("#page #p_contacts").show();
-		$( "#contacts" ).addClass("selected");
-	}
-
+	
 
 	
 	
@@ -212,6 +215,7 @@ function RunTimer () {
 		TestView.p_about = $("#p_about");//содержимое страницы "о методе"
 		TestView.p_todo = $("#p_todo");//содержимое страницы "инструкция"
 		TestView.p_faq = $("#p_faq");//содержимое страницы "faq"
+		TestView.p_contacts = $("#p_contacts");//содержимое страницы "faq"
 		TestView.attention = $("#attention");//кнопка "внимание"
 		TestView.click = $("#click");//кнопка "воспроизвести промежуток"
 		TestView.errorMesage = $("#error");//сообщение об ошибках в тренировке
