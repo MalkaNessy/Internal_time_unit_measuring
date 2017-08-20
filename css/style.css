@@ -171,6 +171,7 @@ ul#ulwhat {
 	border-left: 9px solid #4C96D3;
 	border-right: 3px solid #3F88C5;
 	border-bottom: 9px solid #266EA9;
+	position: relative;
 }
  
 #click:active  {
@@ -218,8 +219,16 @@ ul#ulwhat {
 }
 
 #counter {
-	color: #cce1f2;
+	/* color: #cce1f2; */
+		
+	
+	color: #3F88C5;
 	font-size: inherit;
+	position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%, 0);
+	
 }
 
 #no {

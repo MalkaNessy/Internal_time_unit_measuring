@@ -52,14 +52,27 @@
 		$( "#test" ).addClass("selected");
 	}
 	
+	function click_contacts_show ()
+	{
+		hide_unselected ();
+		TestView.p_faq.load( "texts/p_contacts.html" );
+		$("#page #p_contacts").show();
+		$( "#contacts" ).addClass("selected");
+	}
+
+
+	
+	
 	//показывает текст статьи "ФАКУ" и меняет вид нажатой кнопки меню
-	function click_faq_show ()
+	/* function click_faq_show ()
 	{
 		hide_unselected ();
 		TestView.p_faq.load( "texts/p_faq.html" );
 		$("#page #p_faq").show();
 		$( "#faq" ).addClass("selected");
-	}
+	} */
+	
+	
 	
 	//показывает таблицу результатов
 	/* function results_show ()

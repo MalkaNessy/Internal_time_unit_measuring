@@ -35,12 +35,12 @@
 	
     <header class="container">
 		<ul id="menu" >
+			<li class="menu " id="about" onclick = "click_about_show ()">О методе</li>
 			<li class="menu " id="todo" onclick = "click_todo_show ()">Инструкция</li>
 			<li class="menu " id="simulation" onclick="click_simulation_show()">Тренировка</li>
 			<li class="menu " id="test" onclick = "click_test_show()">Пройти тест</li>
-			<li class="menu " id="about" onclick = "click_about_show ()">О методе</li>
 			<!-- <li class="menu" id="tau" onclick="results_show ()">Результаты</li> -->
-			<!-- <!-- <li class="menu" id="faq" onclick="click_faq_show ()">Частые вопросы</li> --> 
+			<li class="menu" id="contacts" onclick="click_contacts_show ()">Контакты</li> 
 			
 		</ul>
 		
@@ -49,13 +49,22 @@
 	
 	<div id="page">		
 			
-		<div class="text onpage container" id="p_about">
+		<div class="text onpage container" id="p_about"></div>
+		
+		<div class="text onpage" id="p_todo"></div>
+		
+		<div class="text onpage" id="p_contacts"></div>
+		
+		<div class= "button onpage" id="attention">
+			Внимание!
 		</div>
 		
-		<div class="text onpage" id="p_todo">
+		<div class= "button onpage" id="click" onclick="start_click ()">
+			Воспроизведите промежуток <div id="counter">  </div>
 		</div>
 		
-		<div class="text onpage" id="p_faq"></div>
+		<div id="message" >
+		</div>
 		
 		<div class="onpage" id="p_tau" >
 		
@@ -123,16 +132,7 @@
 		</div>
 		
 				
-		<div class= "button onpage" id="attention">
-			Внимание!
-		</div>
 		
-		<div class= "button onpage" id="click" onclick="start_click ()">
-			Воспроизведите промежуток <span id="counter">  </span>
-		</div>
-		
-		<div id="message" >
-		</div>
 		
 		<!-- <audio class="onpage" id="myAudio">
 		  <source src="beep100.mp3" type="audio/mpeg">
