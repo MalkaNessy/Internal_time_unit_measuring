@@ -78,14 +78,14 @@
 	
 	
 	//показывает таблицу результатов
-	/* function results_show ()
+	function results_show ()
 	{
 		hide_unselected ();
 		$("#tau").addClass("selected");
 		$("#page #table").hide(); 
 		$("#page #p_tau").show();
 		
-	} */
+	}
 	
 	//выводит заданные интервалы в таблицу результатов
 	function set_intervals ()
